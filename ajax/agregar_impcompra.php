@@ -10,13 +10,13 @@ if (isset($_POST['costo_compra'])){$costo_compra=$_POST['costo_compra'];}
 	
 if (!empty($id) and !empty($cantidad) and !empty($costo_compra))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp_compra (id_producto,cantidad_tmp,costo_tmp,session_id) VALUES ('$id','$cantidad','$costo_compra','$session_id')");
-$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra,id_producto,cantidad,costo_compra) VALUES ( '7','$id','$cantidad','$costo_compra')");
+	$insert_tmp=mysqli_query($con, "INSERT INTO tmp_compra (id_producto,cantidad_tmp,costo_tmp,session_id) VALUES ('$id','$cantidad','$costo_compra','$session_id')");
+	$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra,id_producto,cantidad,costo_compra) VALUES ( '7','$id','$cantidad','$costo_compra')");
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
-$id_tmp=intval($_GET['id']);	
-$delete=mysqli_query($con, "DELETE FROM tmp_compra WHERE id_tmp='".$id_tmp."'");
+	$id_tmp=intval($_GET['id']);	
+	$delete=mysqli_query($con, "DELETE FROM tmp_compra WHERE id_tmp='".$id_tmp."'");
 }
 
 ?>

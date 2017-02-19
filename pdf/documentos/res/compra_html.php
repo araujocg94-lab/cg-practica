@@ -186,9 +186,9 @@ while ($row=mysqli_fetch_array($sql))
 	$nums++;
 	}
 	$subtotal=number_format($sumador_total,2,'.','');
-	$ganacia=($subtotal * TAX2 )/100;
-	$ganacia=number_format($ganacia,2,'.','');
-	$total_compra=$subtotal+$ganacia;
+	$iva=($subtotal * TAX )/100;
+	$iva=number_format($iva,2,'.','');
+	$total_compra=$subtotal+$iva;
 ?>
 	  
         <tr>
@@ -196,8 +196,8 @@ while ($row=mysqli_fetch_array($sql))
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">GANANCIA (<?php echo TAX2; ?>)% Bs. </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($ganacia,2);?></td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% Bs. </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($iva,2);?></td>
         </tr><tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL Bs. </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>

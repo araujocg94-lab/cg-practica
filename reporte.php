@@ -24,15 +24,15 @@
 		<div class="panel-body">
 			<form class="form-horizontal" method="post"  id="datos_reporte">
 			<div class="form-group">
-			<label for="fec_inic" class="col-sm-3 control-label">Fecha inicio</label>
+			<label for="fecha_inic" class="col-sm-3 control-label">Fecha inicio</label>
 				<div class="col-sm-8">
-					<input type="date" class="form-control" name="fecha_inicio">
+					<input type="date" class="form-control" id="fecha_inic" name="fecha_inic">
 				</div>
 			</div>
 			<div class="form-group">
-			<label for="fec_inic" class="col-sm-3 control-label">Fecha inicio</label>
+			<label for="fecha_fin" class="col-sm-3 control-label">Fecha fin</label>
 				<div class="col-sm-8">
-					<input type="date" class="form-control" name="fecha_fin">
+					<input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
 				</div>
 			</div>
 			<div class="form-group">
