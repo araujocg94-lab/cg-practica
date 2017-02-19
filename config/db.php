@@ -11,5 +11,5 @@ define('DIRECCION_EMPRESA', 'AV. LA LIMPIA, C.C. LOCATEL LOCAL NO. 4. PB. FRENTE
 define('TELEFONO_EMPRESA', '0261-3227590');
 define('EMAIL_EMPRESA', 'bettyfuenmayor23@hotmail.com');
 define('TAX', '12');
-define('TAX2', '30');
+define('TAX2', '10');
 ?>

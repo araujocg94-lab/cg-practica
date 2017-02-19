@@ -35,7 +35,7 @@
 							</div>
 				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
 				  <div class="col-md-2">
-					  <input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="Selecciona un cliente" readonly>
+					  <input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="cliente" readonly>
 					  <input id="id_cliente" type='hidden'>	
 				  </div>
 				  
@@ -50,7 +50,7 @@
 				 </div>
 						<div class="form-group row">
 							<label for="empresa" class="col-md-1 control-label">Vendedor</label>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<select class="form-control input-sm" id="id_vendedor">
 									<?php
 										$sql_vendedor=mysqli_query($con,"select * from users order by apellido");
@@ -74,7 +74,7 @@
 								<input type="text" class="form-control input-sm" id="fecha" value="<?php echo date("d/m/Y");?>" readonly>
 							</div>
 							<label for="email" class="col-md-1 control-label">Pago</label>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<select class='form-control input-sm' id="condiciones">
 									<option value="1">Efectivo</option>
 									<option value="2">Cheque</option>
@@ -82,6 +82,11 @@
 									<option value="4">Crédito</option>
 								</select>
 							</div>
+							<label for="tipo" class="col-md-1 control-label">Tipo</label>
+							<div class="col-md-2">
+							<input type="text" class="form-control input-sm" id="tipo" placeholder="Tipo" readonly>
+							</div>
+
 						</div>
 				
 				
@@ -102,6 +107,8 @@
 					</div>	
 				</div>
 			</form>	
+
+
 			
 		<div id="resultados" class='col-md-12' style="margin-top:10px"></div><!-- Carga los datos ajax -->			
 		</div>
@@ -109,7 +116,7 @@
 		  <div class="row-fluid">
 			<div class="col-md-12">
 			
-	
+
 
 			
 			</div>	
@@ -136,7 +143,7 @@
 								$('#nombre_cliente').val(ui.item.nombre_cliente);
 								$('#tel1').val(ui.item.telefono_cliente);
 								$('#mail').val(ui.item.email_cliente);
-																
+								$('#tipo').val(ui.item.tipo_cliente);					
 								
 							 }
 						});
@@ -151,6 +158,7 @@
 							$("#nombre_cliente" ).val("")
 							$("#tel1" ).val("");
 							$("#mail" ).val("");
+							$("#tipo" ).val("");
 											
 						}
 						if (event.keyCode==$.ui.keyCode.DELETE){
@@ -159,6 +167,8 @@
 							$("#nombre_cliente" ).val("")
 							$("#tel1" ).val("");
 							$("#mail" ).val("");
+							$("#tipo" ).val("");
+	
 						}
 			});	
 	</script>

@@ -25,12 +25,16 @@
 			var cantidad=document.getElementById('cantidad_'+id).value;
 			var descuento=document.getElementById('descuento_'+id).value;
 			//Inicia validacion
+
+
 			if (isNaN(cantidad))
 			{
 			alert('Esto no es un numero');
 			document.getElementById('cantidad_'+id).focus();
 			return false;
 			}
+			if (cantidad > ) {}
+
 			if (isNaN(precio_venta))
 			{
 			alert('Esto no es un numero');
@@ -85,6 +89,8 @@
 			  $("#nombre_cliente").focus();
 			  return false;
 		  }
+
+		  if (true) {}
 		 VentanaCentrada('./pdf/documentos/factura_pdf.php?id_cliente='+id_cliente+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'Factura','','1024','768','true');
 	 	});
 		
