@@ -54,6 +54,7 @@
 		$codigo_producto=$row['codigo_producto'];
 		$cantidad=$row['cantidad_tmp'];
 		$nombre_producto=$row['nombre_producto'];
+		
 		$descuento=$row['descuento_tmp'];
 		$descuento_f=number_format($descuento,2);//Formateo variables
 		$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas

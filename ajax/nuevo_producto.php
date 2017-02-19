@@ -1,16 +1,14 @@
 <?php
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/*Inicia validacion del lado del servidor*/
-	if (empty($_POST['codigo'])) {
-           $errors[] = "Código vacío";
+		if (empty($_POST['codigo'])) {
+	           $errors[] = "Código vacío";
         } else if (empty($_POST['nombre'])){
 			$errors[] = "Nombre del producto vacío";
 		} else if (empty($_POST['cantidad'])){
 			$errors[] = "Cantidad del producto vacía";
-		} else if ($_POST['mod_tipo']==""){
+		} else if ($_POST['tipo']==""){
 			$errors[] = "Selecciona el tipo del producto";
-		} else if ($_POST['estado']==""){
-			$errors[] = "Selecciona el estado del producto";
 		} else if (empty($_POST['precio'])){
 			$errors[] = "Precio de venta vacío";
 		}else if (empty($_POST['costo'])){
@@ -36,20 +34,23 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		$descuento_venta=floatval($_POST['descuento']);
 		$precio_venta=floatval($_POST['precio']);
 		$date_added=date("Y-m-d H:i:s");
+		$ruta = $_FILES['imagen']['tmp_name'];
+		$examinar = $_FILES['imagen']['name'];
 
-	$type = explode('.', $_FILES['imagen']['name']);
-	$type = $type[count($type)-1];		
-	$url = '../imagen/'.uniqid(rand()).'.'.$type;
-	if(in_array($type, array('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'))) {
-		if(is_uploaded_file($_FILES['imagen']['tmp_name'])) {			
-			if(move_uploaded_file($_FILES['imagen']['tmp_name'], $url)) {
-		$sql="INSERT INTO productos (codigo_producto, nombre_producto, descripcion_producto, imagen_producto, cantidad_producto, tipo_producto, date_added, compra, descuento_producto, precio_producto) VALUES ('$codigo','$nombre', '$descripcion', '$url','$cantidad','$tipo','$date_added','$costo_compra', '$descuento_venta','$precio_venta')";
+	// $type = explode('.', $_FILES['imagen']['name']);
+	// $type = $type[count($type)-1];		
+	// $url = '../imagen/'.uniqid(rand()).'.'.$type;
+	// if(in_array($type, array('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'))) {
+	// 	if(is_uploaded_file($_FILES['imagen']['tmp_name'])) {			
+	// 		if(move_uploaded_file($_FILES['imagen']['tmp_name'], $url)) 
+	// 	{
+		$sql="INSERT INTO productos (codigo_producto, nombre_producto, descripcion_producto, imagen_producto, cantidad_producto, tipo_producto, date_added, costo_producto, descuento_producto, precio_producto) VALUES ('$codigo','$nombre', '$descripcion', '$examinar','$cantidad','$tipo','$date_added','$costo_compra', '$descuento_venta','$precio_venta')";
 		$query_new_insert = mysqli_query($con,$sql);
 
-		echo $sql ;
-
+		echo $sql;
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
+				move_uploaded_file($ruta, '../imagen/'.$examinar);
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
@@ -85,7 +86,6 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				</div>
 				<?php
 			}
-}
-}
-}
+
+// }
 ?>

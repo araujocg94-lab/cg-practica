@@ -46,7 +46,6 @@
 					<th>Código</th>
 					<th>Producto</th>
 					<th><span class="pull-right">Cant.</span></th>
-					<th><span class="pull-right">Descuento</span></th>
 					<th><span class="pull-right">costo</span></th>
 					<th class='text-center' style="width: 36px;">Agregar</th>
 				</tr>
@@ -55,8 +54,6 @@
 					$id_producto=$row['id_producto'];
 					$codigo_producto=$row['codigo_producto'];
 					$nombre_producto=$row['nombre_producto'];
-					$descuento_compra=$row["descuento_producto"];
-					$descuento_compra=number_format($descuento_compra,2);
 					$costo_compra=$row["costo_producto"];
 					$costo_compra=number_format($costo_compra,2);
 					?>
@@ -66,9 +63,6 @@
 						<td class='col-xs-1'>
 						<div class="pull-right">
 						<input type="text" class="form-control" style="text-align:right" id="cantidad_<?php echo $id_producto; ?>"  value="1" >
-						</div></td>
-						<td class='col-xs-2'><div class="pull-right">
-						<input type="text" class="form-control" style="text-align:right" id="descuento_compra_<?php echo $id_producto; ?>"  value="<?php echo $descuento_compra;?>" readonly>
 						</div></td>
 						<td class='col-xs-2'><div class="pull-right">
 						<input type="text" class="form-control" style="text-align:right" id="costo_compra_<?php echo $id_producto; ?>"  value="<?php echo $costo_compra;?>" >

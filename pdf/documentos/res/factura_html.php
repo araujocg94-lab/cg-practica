@@ -160,10 +160,15 @@ while ($row=mysqli_fetch_array($sql))
 	$sql_update="UPDATE productos SET cantidad_producto = $total_producto WHERE id_producto = $id_producto";
 	$update_prod=mysqli_query($con, $sql_update);
 
+	$descuento=$row['descuento_tmp'];	
+	$descuento_f=number_format($descuento,2);//Formateo variables
+	$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas
+
 	$precio_venta=$row['precio_tmp'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
-	$precio_total=$precio_venta_r*$cantidad;
+
+	$precio_total=($precio_venta_r*$cantidad)-$descuento_r;
 	$precio_total_f=number_format($precio_total,2);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador

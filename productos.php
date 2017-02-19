@@ -70,7 +70,6 @@ $( "#guardar_producto" ).submit(function( event ) {
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
-			data: "multipart/form-data",
 			url: "ajax/nuevo_producto.php",
 			data: parametros,
 			 beforeSend: function(objeto){
@@ -91,7 +90,6 @@ $( "#editar_producto" ).submit(function( event ) {
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
-			data: "multipart/form-data",
 			url: "ajax/editar_producto.php",
 			data: parametros,
 			 beforeSend: function(objeto){
@@ -113,7 +111,6 @@ $( "#editar_producto" ).submit(function( event ) {
 			var imagen_producto = $("#imagen_producto"+id).val();
 			var cantidad_producto = $("#cantidad_producto"+id).val();
 			var tipo_producto = $("#tipo_producto"+id).val();
-			var estado = $("#estado"+id).val();
 			var descuento_producto = $("#descuento_producto"+id).val();
 			var precio_producto = $("#precio_producto"+id).val();
 			var costo_producto = $("#costo_producto"+id).val();

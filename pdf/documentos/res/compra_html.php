@@ -134,11 +134,10 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
             <th style="width: 60%" class='midnight-green'>DESCRIPCION</th>
-            <th style="width: 15%;text-align: right" class='midnight-green'>COSTO UNIT.</th>
-            <th style="width: 15%;text-align: right" class='midnight-green'>COSTO TOTAL</th>
+            <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO UNIT.</th>
+            <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
             
         </tr>
-
 <?php
 $nums=1;
 $sumador_total=0;
@@ -147,18 +146,23 @@ while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
 	$id_producto=$row["id_producto"];
-	$codigo_producto=$row['codigo_producto'];	
+	$codigo_producto=$row['codigo_producto'];
 	$cantidad=$row['cantidad_tmp'];
 	$nombre_producto=$row['nombre_producto'];
 
-
-	$nombre_producto=$row['nombre_producto'];
+	$compara=$row['cantidad_producto'];
+	
+	$total_producto=$compara+$cantidad;
+	$sql_update="UPDATE productos SET cantidad_producto = $total_producto WHERE id_producto = $id_producto";
+	$update_prod=mysqli_query($con, $sql_update);
 	
 	$costo_compra=$row['costo_tmp'];
 	$costo_compra_f=number_format($costo_compra,2);//Formateo variables
 	$costo_compra_r=str_replace(",","",$costo_compra_f);//Reemplazo las comas
+
 	$costo_total=$costo_compra_r*$cantidad;
-	$costo_total_f=number_format($costo_total,2);//COSTO total formateado
+
+	$costo_total_f=number_format($costo_total,2);//Precio total formateado
 	$costo_total_r=str_replace(",","",$costo_total_f);//Reemplazo las comas
 	$sumador_total+=$costo_total_r;//Sumador
 	if ($nums%2==0){
@@ -178,14 +182,13 @@ while ($row=mysqli_fetch_array($sql))
 
 	<?php 
 	//Insert en la tabla detalle_cotizacion
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra VALUES ('','$numero_compra','$id_producto','$cantidad','','$costo_compra_r')");
 	
 	$nums++;
 	}
 	$subtotal=number_format($sumador_total,2,'.','');
-	$IVA=($subtotal * TAX )/100;
-	$IVA=number_format($IVA,2,'.','');
-	$total_compra=$subtotal+$IVA;
+	$ganacia=($subtotal * TAX2 )/100;
+	$ganacia=number_format($ganacia,2,'.','');
+	$total_compra=$subtotal+$ganacia;
 ?>
 	  
         <tr>
@@ -193,8 +196,8 @@ while ($row=mysqli_fetch_array($sql))
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% Bs. </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($IVA,2);?></td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">GANANCIA (<?php echo TAX2; ?>)% Bs. </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($ganacia,2);?></td>
         </tr><tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL Bs. </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>
@@ -204,12 +207,17 @@ while ($row=mysqli_fetch_array($sql))
 	
 	
 	<br>
-		  
+	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias por su compra!</div>
+	
+	
+	  
 
 </page>
 
 <?php
 $date=date("Y-m-d H:i:s");
+
 $insert=mysqli_query($con,"INSERT INTO compras VALUES ('','$numero_compra','$date','$id_prov','$id_vendedor','$condiciones','$total_compra','1')");
+$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra VALUES ('','$numero_compra','$id_producto','$cantidad','$costo_compra_r')");
 $delete=mysqli_query($con,"DELETE FROM tmp_compra WHERE session_id='".$session_id."'");
 ?>

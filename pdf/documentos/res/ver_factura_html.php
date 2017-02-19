@@ -80,7 +80,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
            <td style="width:20%;" class='midnight-green'>E-MAIL</td>
         </tr>
 		<tr>
-           <td style="width:30%;" >
+           <td style="width:20%;" >
 			<?php 
 				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
 				$rw_cliente=mysqli_fetch_array($sql_cliente);
@@ -131,8 +131,9 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
-            <th style="width: 60%" class='midnight-green'>DESCRIPCION</th>
+            <th style="width: 45%" class='midnight-green'>DESCRIPCION</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO UNIT.</th>
+            <th style="width: 15%;text-align: right" class='midnight-green'>DESCUENTO.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
             
         </tr>
@@ -148,11 +149,16 @@ while ($row=mysqli_fetch_array($sql))
 	$codigo_producto=$row['codigo_producto'];
 	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
+
+	$descuento=$row['descuento_venta'];	
+	$descuento_f=number_format($descuento,2);//Formateo variables
+	$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas
 	
 	$precio_venta=$row['precio_venta'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
-	$precio_total=$precio_venta_r*$cantidad;
+
+	$precio_total=($precio_venta_r*$cantidad)-$descuento_r;
 	$precio_total_f=number_format($precio_total,2);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
@@ -165,8 +171,9 @@ while ($row=mysqli_fetch_array($sql))
 
         <tr>
             <td class='<?php echo $clase;?>' style="width: 10%; text-align: center"><?php echo $cantidad; ?></td>
-            <td class='<?php echo $clase;?>' style="width: 60%; text-align: left"><?php echo $nombre_producto;?></td>
+            <td class='<?php echo $clase;?>' style="width: 45%; text-align: left"><?php echo $nombre_producto;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_venta_f;?></td>
+            <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $descuento_f;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_total_f;?></td>
             
         </tr>
