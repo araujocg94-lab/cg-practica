@@ -133,8 +133,9 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
-            <th style="width: 60%" class='midnight-green'>DESCRIPCION</th>
+            <th style="width: 45%" class='midnight-green'>DESCRIPCION</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO UNIT.</th>
+            <th style="width: 15%;text-align: right" class='midnight-green'>DESCUENTO.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
             
         </tr>
@@ -150,7 +151,15 @@ while ($row=mysqli_fetch_array($sql))
 	$codigo_producto=$row['codigo_producto'];
 	$cantidad=$row['cantidad_tmp'];
 	$nombre_producto=$row['nombre_producto'];
+	$descuento=$row['descuento_tmp'];
+	$descuento_f=number_format($descuento,2);//Formateo variables
+	$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas
+	$compara=$row['cantidad_producto'];
 	
+	$total_producto=$compara-$cantidad;
+	$sql_update="UPDATE productos SET cantidad_producto = $total_producto WHERE id_producto = $id_producto";
+	$update_prod=mysqli_query($con, $sql_update);
+
 	$precio_venta=$row['precio_tmp'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
@@ -167,15 +176,16 @@ while ($row=mysqli_fetch_array($sql))
 
         <tr>
             <td class='<?php echo $clase;?>' style="width: 10%; text-align: center"><?php echo $cantidad; ?></td>
-            <td class='<?php echo $clase;?>' style="width: 60%; text-align: left"><?php echo $nombre_producto;?></td>
+            <td class='<?php echo $clase;?>' style="width: 45%; text-align: left"><?php echo $nombre_producto;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_venta_f;?></td>
+            <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $descuento_f;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_total_f;?></td>
             
         </tr>
 
 	<?php 
 	//Insert en la tabla detalle_cotizacion
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','','$precio_venta_r')");
+	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$descuento_f','$precio_venta_r')");
 	
 	$nums++;
 	}
@@ -186,14 +196,14 @@ while ($row=mysqli_fetch_array($sql))
 ?>
 	  
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL &#36; </td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">SUBTOTAL &#36; </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% &#36; </td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% &#36; </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
         </tr><tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL &#36; </td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">TOTAL &#36; </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
         </tr>
     </table>

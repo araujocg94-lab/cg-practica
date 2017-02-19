@@ -70,6 +70,7 @@ $( "#guardar_producto" ).submit(function( event ) {
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
+			data: "multipart/form-data",
 			url: "ajax/nuevo_producto.php",
 			data: parametros,
 			 beforeSend: function(objeto){
@@ -90,6 +91,7 @@ $( "#editar_producto" ).submit(function( event ) {
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
+			data: "multipart/form-data",
 			url: "ajax/editar_producto.php",
 			data: parametros,
 			 beforeSend: function(objeto){
