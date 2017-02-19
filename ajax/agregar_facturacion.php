@@ -18,9 +18,6 @@
 			$compara = $row[0];
 		}
 		if ($cantidad > $compara) {
-
-
-			echo ("<br>".$probando);
 			echo ("<br>"."asdasdasdas".$compara);
 		}else{
 			echo (' yo soy menor');
