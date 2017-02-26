@@ -50,7 +50,7 @@
 						<div class="form-group row">
 							<label for="empresa" class="col-md-1 control-label">Vendedor</label>
 							<div class="col-md-3">
-								<select class="form-control input-sm" id="id_vendedor">
+								<select class="form-control input-sm" id="id_vendedor" disabled="true">
 									<?php
 										$sql_vendedor=mysqli_query($con,"select * from users order by apellido");
 										while ($rw=mysqli_fetch_array($sql_vendedor)){
@@ -62,7 +62,7 @@
 												$selected="";
 											}
 											?>
-											<option value="<?php echo $id_vendedor?>" <?php echo $selected;?>><?php echo $nombre_vendedor?></option>
+											<option  value="<?php echo $id_vendedor?>" <?php echo $selected;?>><?php echo $nombre_vendedor?></option>
 											<?php
 										}
 									?>

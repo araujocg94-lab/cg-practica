@@ -47,7 +47,6 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		$sql="INSERT INTO productos (codigo_producto, nombre_producto, descripcion_producto, imagen_producto, cantidad_producto, tipo_producto, date_added, costo_producto, descuento_producto, precio_producto) VALUES ('$codigo','$nombre', '$descripcion', '$examinar','$cantidad','$tipo','$date_added','$costo_compra', '$descuento_venta','$precio_venta')";
 		$query_new_insert = mysqli_query($con,$sql);
 
-		echo $sql;
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
 				move_uploaded_file($ruta, '../imagen/'.$examinar);

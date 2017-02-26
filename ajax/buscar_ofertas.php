@@ -25,7 +25,7 @@
 		include 'pagination.php'; 
 		//Variables de paginacion
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-		$per_page = 12; //catidad de registro mostrados
+		$per_page = 9; //catidad de registro mostrados
 		$adjacents  = 4; //brecha entre paginas adyacentes
 		$offset = ($page - 1) * $per_page;
 		//Cuenta el número total de filas en la tabla
@@ -33,9 +33,9 @@
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
-		$reload = './caballeros.php';
+		$reload = './ofertas.php';
 		//consulta para odtener datos
-		$sql="SELECT * FROM  $sTable Where tipo_producto= '2' or tipo_producto='0' LIMIT $offset,$per_page";
+		$sql="SELECT * FROM  $sTable Where descuento_producto > '0' LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 		//enlazar datos odtenidos
 		if ($numrows>0){
@@ -58,15 +58,16 @@
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						$descuento_producto=$row['descuento_producto'];
 						$precio_producto=$row['precio_producto'];
+						$total=$precio_producto-$descuento_producto;
 					?>
 
   					<div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="<?php echo $imagen_producto; ?>" style="height:200px; width:200px;">
-                            <div class="caption">
-                                <h4 class="pull-right"><?php echo number_format($precio_producto,2);?>Bs.</h4>
-                                <h4><a href="#"><?php echo $nombre_producto; ?></a>
-                                </h4>
+							<img src="<?php echo $imagen_producto; ?>" style="height:200px; width:200px;">                             							<div class="caption">
+                            <h4 class="pull-right"><?php echo number_format($total,2);?>Bs.</h4>
+                            <h5 class="pull-right"><strike><?php echo number_format($precio_producto,2);?>Bs.</strike></h5>
+                                
+                                <h4><?php echo $nombre_producto; ?></h4>
                                 <p><?php echo $descripcion_producto; ?> </p>
                             </div>
                         </div>
@@ -74,8 +75,9 @@
 					<?php
 				}
 				?>
+
 			</div>
-			<div class="col-md-4 col-md-offset-5"">
+				<div class="col-md-4 col-md-offset-5"">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?>

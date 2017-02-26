@@ -1,8 +1,8 @@
 <?php
 function paginate($reload, $page, $tpages, $adjacents) {
-	$prevlabel = "&lsaquo; Prev";
-	$nextlabel = "Next &rsaquo;";
-	$out = '<ul class="pagination pagination-large">';
+	$prevlabel = "&lsaquo; ";
+	$nextlabel = " &rsaquo;";
+	$out = '<ul class="pagination justify-content-center">';
 	
 	// previous label
 

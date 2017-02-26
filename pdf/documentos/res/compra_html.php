@@ -182,7 +182,9 @@ while ($row=mysqli_fetch_array($sql))
 
 	<?php 
 	//Insert en la tabla detalle_cotizacion
-	
+	$sql_det="INSERT INTO detalle_compra (id_detalle, numero_compra, id_producto, cantidad, costo_compra) VALUES ('','$numero_compra','$id_producto','$cantidad','$costo_compra_r')";
+	$insert_detail=mysqli_query($con, $sql_det);
+
 	$nums++;
 	}
 	$subtotal=number_format($sumador_total,2,'.','');
@@ -207,8 +209,6 @@ while ($row=mysqli_fetch_array($sql))
 	
 	
 	<br>
-	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias por su compra!</div>
-	
 	
 	  
 
@@ -218,6 +218,5 @@ while ($row=mysqli_fetch_array($sql))
 $date=date("Y-m-d H:i:s");
 
 $insert=mysqli_query($con,"INSERT INTO compras VALUES ('','$numero_compra','$date','$id_prov','$id_vendedor','$condiciones','$total_compra','1')");
-$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra VALUES ('','$numero_compra','$id_producto','$cantidad','$costo_compra_r')");
 $delete=mysqli_query($con,"DELETE FROM tmp_compra WHERE session_id='".$session_id."'");
 ?>

@@ -94,7 +94,18 @@
 						<td class='text-right'><?php echo number_format ($total_venta,2); ?></td>					
 					<td class="text-right">
 						<a href="#" class='btn btn-success' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><i class="glyphicon glyphicon-download"></i></a> 
+						<?php
+
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
+                    	while ($rw=mysqli_fetch_array($sql_user)){
+                      	$id_user=$rw["user_id"];
+                      	if ($id_user==$_SESSION['user_id']){
+                        ?>
 						<a href="#" class='btn btn-danger' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						<?php
+                      } 
+                    }
+                  ?>
 					</td>
 						
 					</tr>
@@ -102,9 +113,11 @@
 				}
 				?>
 				<tr>
-					<td colspan=7><span class="pull-right"><?
+					<td colspan=5><span class="pull-right">
+					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
+					<td colspan=4></td>
 				</tr>
 			  </table>
 			</div>

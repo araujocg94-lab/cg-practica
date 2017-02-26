@@ -21,7 +21,7 @@
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 		}
-		include 'pagination.php'; //include pagination file
+	include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
 		$per_page = 5; //how much records you want to show
@@ -45,7 +45,7 @@
 				<tr  class="warning">
 					<th>Código</th>
 					<th>Producto</th>
-					<th><span class="pull-right">Cant.</span></th>
+					<th><span class="pull-right">Cantidad</span></th>
 					<th><span class="pull-right">Descuento</span></th>
 					<th><span class="pull-right">Precio</span></th>
 					<th class='text-center' style="width: 36px;">Agregar</th>
@@ -58,10 +58,8 @@
 					$cantidad_producto=$row['cantidad_producto'];
 
 					$descuento_venta=$row["descuento_producto"];
-					$descuento_venta=number_format($descuento_venta,2);
 
 					$precio_venta=$row["precio_producto"];
-					$precio_venta=number_format($precio_venta,2);
 					?>
 					<tr>
 						<td><?php echo $codigo_producto; ?></td>
@@ -70,11 +68,11 @@
 						<div class="pull-right">
 						<input type="text" class="form-control" style="text-align:right" id="cantidad_<?php echo $id_producto; ?>"  value="1" >
 						</div></td>
-						<td class='col-xs-2'><div class="pull-right">
-						<input type="text" class="form-control" style="text-align:right" id="descuento_<?php echo $id_producto; ?>" value="" >
+						<td class='col-xs-1'><div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="descuento_<?php echo $id_producto; ?>" value="<?php echo $descuento_venta;?>" readonly>
 						</div></td>
 						<td class='col-xs-2'><div class="pull-right">
-						<input type="text" class="form-control" style="text-align:right" id="precio_venta_<?php echo $id_producto; ?>"  value="<?php echo $precio_venta;?>" >
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_<?php echo $id_producto; ?>"  value="<?php echo $precio_venta;?>" readonly>
 						</div></td>
 						<td class='text-center'><a class='btn btn-success' href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="glyphicon glyphicon-plus"></i></a></td>
 					</tr>
@@ -82,7 +80,8 @@
 				}
 				?>
 				<tr>
-					<td colspan=5><span class="pull-right"><?
+					<td colspan=4><span class="pull-right">
+					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
 				</tr>

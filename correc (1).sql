@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2017 a las 04:09:13
--- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 5.6.28
+-- Tiempo de generación: 26-02-2017 a las 18:18:04
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `prueba`
+-- Base de datos: `correc`
 --
 
 -- --------------------------------------------------------
@@ -68,8 +68,14 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`id_compra`, `numero_compra`, `fecha_compra`, `id_prov`, `id_vendedor`, `condiciones`, `total_compra`, `estado_compra`) VALUES
-(6, 3, '2017-02-18 04:02:45', 1, 1, '1', '224', 1),
-(7, 4, '2017-02-18 04:03:14', 1, 1, '1', '672', 1);
+(30, 2, '2017-02-21 01:48:45', 2, 1, '1', '224', 1),
+(31, 3, '2017-02-21 01:49:56', 2, 1, '1', '1120', 1),
+(32, 4, '2017-02-21 01:54:15', 2, 1, '1', '4256', 1),
+(33, 5, '2017-02-21 02:47:08', 1, 1, '1', '87137.12', 1),
+(34, 6, '2017-02-21 23:44:07', 1, 1, '1', '14050.4', 1),
+(35, 7, '2017-02-26 13:27:30', 1, 0, '1', '14050.4', 1),
+(36, 8, '2017-02-26 13:28:22', 1, 0, '1', '13826.4', 1),
+(37, 9, '2017-02-26 13:29:13', 1, 1, '1', '87137.12', 1);
 
 -- --------------------------------------------------------
 
@@ -82,9 +88,26 @@ CREATE TABLE `detalle_compra` (
   `numero_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `descuento_compra` double(3,2) DEFAULT NULL,
   `costo_compra` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalle_compra`
+--
+
+INSERT INTO `detalle_compra` (`id_detalle`, `numero_compra`, `id_producto`, `cantidad`, `costo_compra`) VALUES
+(61, 2, 1, 1, 200),
+(64, 3, 1, 5, 200),
+(65, 4, 1, 19, 200),
+(66, 5, 12, 1, 12345),
+(67, 5, 13, 1, 65456),
+(68, 6, 1, 1, 200),
+(69, 6, 12, 1, 12345),
+(70, 7, 1, 1, 200),
+(71, 7, 12, 1, 12345),
+(72, 8, 12, 1, 12345),
+(73, 9, 13, 1, 65456),
+(74, 9, 12, 1, 12345);
 
 -- --------------------------------------------------------
 
@@ -97,7 +120,7 @@ CREATE TABLE `detalle_factura` (
   `numero_factura` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `descuento_venta` double(3,2) DEFAULT NULL,
+  `descuento_venta` double DEFAULT NULL,
   `precio_venta` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -106,18 +129,27 @@ CREATE TABLE `detalle_factura` (
 --
 
 INSERT INTO `detalle_factura` (`id_detalle`, `numero_factura`, `id_producto`, `cantidad`, `descuento_venta`, `precio_venta`) VALUES
-(2, 1, 1, 1, 0.00, 12),
-(3, 2, 1, 1, 0.00, 12),
-(4, 3, 2, 1, 0.00, 240.22),
-(5, 3, 1, 1, 0.00, 12),
-(6, 4, 1, 1, 0.00, 12),
-(7, 5, 1, 1, 0.00, 12),
-(8, 5, 2, 1, 0.00, 240.22),
-(13, 8, 1, 1, 0.00, 12),
-(10, 7, 1, 1, 0.00, 12),
-(11, 7, 2, 1, 0.00, 240.22),
-(12, 7, 3, 1, 0.00, 214),
-(14, 9, 1, 1, 0.00, 12);
+(2, 1, 1, 1, 0, 12),
+(3, 2, 1, 1, 0, 12),
+(4, 3, 2, 1, 0, 240.22),
+(5, 3, 1, 1, 0, 12),
+(6, 4, 1, 1, 0, 12),
+(7, 5, 1, 1, 0, 12),
+(8, 5, 2, 1, 0, 240.22),
+(13, 8, 1, 1, 0, 12),
+(10, 7, 1, 1, 0, 12),
+(11, 7, 2, 1, 0, 240.22),
+(12, 7, 3, 1, 0, 214),
+(14, 9, 1, 1, 0, 12),
+(22, 10, 3, 1, 0, 214),
+(21, 10, 1, 1, 0, 12),
+(20, 10, 3, 1, 0, 214),
+(19, 10, 1, 5, 0, 12),
+(23, 10, 1, 1, 0, 12),
+(24, 11, 1, 1, 0, 12),
+(40, 15, 12, 1, 0, 200),
+(41, 15, 12, 1, 0, 14532),
+(39, 14, 1, 1, 5, 12);
 
 -- --------------------------------------------------------
 
@@ -148,7 +180,11 @@ INSERT INTO `facturas` (`id_factura`, `numero_factura`, `fecha_factura`, `id_cli
 (6, 5, '2017-01-15 21:46:49', 2, 1, '1', '282.49', 1),
 (9, 8, '2017-01-19 23:11:28', 2, 1, '1', '13.44', 1),
 (8, 7, '2017-01-19 03:31:21', 4, 1, '1', '522.17', 1),
-(11, 9, '2017-02-18 03:23:13', 2, 1, '1', '13.44', 1);
+(11, 9, '2017-02-18 03:23:13', 2, 1, '1', '13.44', 1),
+(13, 10, '2017-02-19 04:59:22', 2, 1, '1', '573.44', 1),
+(14, 11, '2017-02-19 05:06:30', 2, 1, '1', '13.44', 1),
+(20, 15, '2017-02-21 02:26:33', 3, 1, '1', '16499.84', 1),
+(19, 14, '2017-02-19 19:24:13', 2, 1, '1', '7.84', 1);
 
 -- --------------------------------------------------------
 
@@ -166,7 +202,7 @@ CREATE TABLE `productos` (
   `tipo_producto` tinyint(4) NOT NULL,
   `date_added` datetime NOT NULL,
   `costo_producto` double NOT NULL,
-  `descuento_producto` double(3,2) DEFAULT NULL,
+  `descuento_producto` double DEFAULT NULL,
   `precio_producto` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -175,9 +211,10 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `codigo_producto`, `nombre_producto`, `descripcion_producto`, `imagen_producto`, `cantidad_producto`, `tipo_producto`, `date_added`, `costo_producto`, `descuento_producto`, `precio_producto`) VALUES
-(1, '123', 'caja', 'ffgfgfg', NULL, 0, 0, '2017-01-07 00:19:19', 200, 0.00, 12),
-(2, '22', 'ropa', 'hgfghfg', NULL, 0, 0, '2017-01-07 01:45:17', 0, 0.00, 240.22),
-(3, '125', 'vestido', 'fgfgf', NULL, 0, 0, '2017-01-16 02:15:52', 0, 0.00, 214);
+(1, '12', 'caja', 'ghghgjh', 'img/1488121093_aurasma.png', 17, 1, '2017-02-01 00:00:00', 200, 0, 200),
+(12, '23123', 'asdasd', 'swdawdadawd', '', 36, 0, '2017-02-19 15:37:42', 12345, 23, 14532),
+(13, '41234', 'sfsdfsf', 'fsefefsf', '', 33, 0, '2017-02-19 15:44:04', 65456, 21, 3233),
+(18, '15', '5454', '5455', '', 15, 1, '2017-02-26 00:45:10', 555, 0, 158);
 
 -- --------------------------------------------------------
 
@@ -213,7 +250,7 @@ CREATE TABLE `tmp` (
   `id_tmp` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad_tmp` int(11) NOT NULL,
-  `descuento_tmp` double(3,2) DEFAULT NULL,
+  `descuento_tmp` double DEFAULT NULL,
   `precio_tmp` double(8,2) DEFAULT NULL,
   `session_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -224,7 +261,10 @@ CREATE TABLE `tmp` (
 
 INSERT INTO `tmp` (`id_tmp`, `id_producto`, `cantidad_tmp`, `descuento_tmp`, `precio_tmp`, `session_id`) VALUES
 (26, 1, 1, NULL, 12.00, 'm5bk7aiokpes7rcpr3b6m9qeu7'),
-(44, 1, 1, NULL, 12.00, 'hjrfq6t8qqetvt5n33jh23kne3');
+(44, 1, 1, NULL, 12.00, 'hjrfq6t8qqetvt5n33jh23kne3'),
+(132, 1, 5, 0, 12.00, '1qhccj5ln76e6a4oriaf46ibt2'),
+(138, 1, 1, 0, 200.50, 'j4n7j5qja8k5mfpm5v7k9u9rk6'),
+(166, 12, 1, 23, 14532.00, 'tm0jar7ovbhf0d1o2sjqdjv0v1');
 
 -- --------------------------------------------------------
 
@@ -236,7 +276,6 @@ CREATE TABLE `tmp_compra` (
   `id_tmp` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad_tmp` int(11) NOT NULL,
-  `descuento_com` double(3,2) DEFAULT NULL,
   `costo_tmp` double(8,2) DEFAULT NULL,
   `session_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -265,7 +304,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `nombre`, `apellido`, `user_name`, `user_password_hash`, `user_email`, `user_tipo`, `date_added`) VALUES
 (1, 'carlos', 'araujo', 'admin', '$2y$10$MPVHzZ2ZPOWmtUUGCq3RXu31OTB.jo7M9LZ7PmPQYmgETSNn19ejO', 'admin@admin.com', 1, '2016-05-21 15:06:00'),
 (2, 'car', 'ara', 'cg', '$2y$10$dNS.7nA8zTcIRVVohqLgnujNfpr64D7QeroE2yMZjI39UpgYGNSHi', '12@12.com', 2, '2017-01-07 02:12:15'),
-(3, 'betty', 'reyes', 'bet', '$2y$10$m40otm6Y9cO44HTRwAHpt.FPDziYceZscYN769zU1b3nbbyr6SUea', 'bet@hotmail.com', 0, '2017-02-17 00:55:59');
+(3, 'betty', 'reyes', 'bet', '$2y$10$m40otm6Y9cO44HTRwAHpt.FPDziYceZscYN769zU1b3nbbyr6SUea', 'bet@hotmail.com', 0, '2017-02-17 00:55:59'),
+(4, 'luis', 'hernandez', 'luis55', '$2y$10$dGz1ED0j2uSYZeR/jURune01dmTKZ36pOyzUas8D8oL8IyZMH/E86', '1552@12.com', 0, '2017-02-26 06:25:06');
 
 --
 -- Índices para tablas volcadas
@@ -293,7 +333,6 @@ ALTER TABLE `compras`
 --
 ALTER TABLE `detalle_compra`
   ADD PRIMARY KEY (`id_detalle`),
-  ADD KEY `numero_compra` (`numero_compra`),
   ADD KEY `id_producto` (`id_producto`);
 
 --
@@ -358,27 +397,27 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT de la tabla `detalle_compra`
 --
 ALTER TABLE `detalle_compra`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
@@ -388,34 +427,17 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `tmp`
 --
 ALTER TABLE `tmp`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 --
 -- AUTO_INCREMENT de la tabla `tmp_compra`
 --
 ALTER TABLE `tmp_compra`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index', AUTO_INCREMENT=4;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `compras`
---
-ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`id_vendedor`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `compras_ibfk_2` FOREIGN KEY (`id_prov`) REFERENCES `proveedor` (`id_prov`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `detalle_compra`
---
-ALTER TABLE `detalle_compra`
-  ADD CONSTRAINT `detalle_compra_ibfk_1` FOREIGN KEY (`numero_compra`) REFERENCES `compras` (`numero_compra`) ON DELETE CASCADE;
-
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index', AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

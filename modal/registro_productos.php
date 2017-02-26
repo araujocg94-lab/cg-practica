@@ -32,11 +32,16 @@
 					<textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción del producto" maxlength="255" ></textarea>
 				</div>
 			  </div>
+				<div class="form-group " align="center"> 
+					<div id="load_img">
+						<img class="img-responsive" src="" alt="Logo">
+					</div>
 			   <div class="form-group">
 				<label for="imagen" class="col-sm-3 control-label">Imagen</label>
 				<div class="col-sm-8">
-				  <input type="file"  id="imagen" name="imagen" accept="image/*">
+				  <input type="file"  id="imagen" name="imagen" onchange="upload_image();">
 				</div>
+			  </div>
 			  </div>
 			 <div class="form-group">
 				<label for="tipo" class="col-sm-3 control-label">Tipo</label>

@@ -14,13 +14,13 @@
 		$sql_pro="SELECT cantidad_producto FROM productos WHERE id_producto = '$id' ";
 		$consult_tmp=mysqli_query($con, $sql_pro);
 		while ($row=mysqli_fetch_array($consult_tmp)) {
-			echo($row[0]);
 			$compara = $row[0];
 		}
 		if ($cantidad > $compara) {
-			echo ("<br>"."asdasdasdas".$compara);
+			?>
+			<script>alert('Cantidad exede la existencia disponible');</script>
+			<?php
 		}else{
-			echo (' yo soy menor');
 			$sql_tmp="INSERT INTO tmp (id_producto, cantidad_tmp, descuento_tmp, precio_tmp, session_id) VALUES ('$id','$cantidad','$descuento','$precio_venta','$session_id')";
 			$insert_tmp=mysqli_query($con, $sql_tmp);
 		}
@@ -47,6 +47,7 @@
 	</tr>
 	<?php
 		$sumador_total=0;
+		$sumador_descuento=0;
 		$sql=mysqli_query($con, "select * from productos, tmp where productos.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
 		while ($row=mysqli_fetch_array($sql))
 		{
@@ -58,6 +59,7 @@
 		$descuento=$row['descuento_tmp'];
 		$descuento_f=number_format($descuento,2);//Formateo variables
 		$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas
+		$sumador_descuento+=$descuento_r;//Sumador
 		
 		$precio_venta=$row['precio_tmp'];
 		$precio_venta_f=number_format($precio_venta,2);//Formateo variables
@@ -82,7 +84,7 @@
 		}
 
 
-		// $descuento_cliente=
+		$subdescuento=number_format($sumador_descuento,2,'.','');
 		$subtotal=number_format($sumador_total,2,'.','');
 		$total_iva=($subtotal * TAX )/100;
 		$total_iva=number_format($total_iva,2,'.','');
@@ -95,8 +97,8 @@
 		<td></td>
 	</tr>
 	<tr>
-		<td class='text-right' colspan=5>DESCUENTO CLIENTE </td>
-		<td class='text-right'><?php echo number_format($subtotal,2);?>Bs.</td>
+		<td class='text-right' colspan=5>DESCUENTO </td>
+		<td class='text-right'><?php echo number_format($subdescuento,2);?>Bs.</td>
 		<td></td>
 	</tr>
 	<tr>

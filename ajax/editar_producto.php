@@ -31,7 +31,6 @@
 		$imagen=intval($_POST['mod_imagen']); 
 		$cantidad=intval($_POST['mod_cantidad']);
 		$tipo=intval($_POST['mod_tipo']);
-		$estado=intval($_POST['mod_estado']);
 		$costo_compra=floatval($_POST['mod_costo']);
 		$descuento_venta=floatval($_POST['mod_descuento']);
 		$precio_venta=floatval($_POST['mod_precio']);

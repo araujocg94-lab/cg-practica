@@ -73,9 +73,9 @@
 
  .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
-      width: 50%;
-      min-width: 100%;
-      height: 200px;
+      width: 70%;
+      min-width: 80%;
+      height: 500px;
       margin: auto;
   }
 
@@ -97,6 +97,99 @@
 .img-respon{
   width:100%; 
   height: 220px;
+}
+
+.pagination {
+    height: 36px;
+    margin: 18px 0;
+    color: #13b216;
+}
+
+.pagination ul {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-left: 0;
+    color: #ffffff;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pagination li {
+    display: inline;
+    color: #13b216;
+}
+
+
+.pagination a {
+    float: left;
+    padding: 0 14px;
+    line-height: 18px;
+    color: #13b216;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left-width: 0;
+}
+
+.pagination a:hover,
+.pagination .active a {
+    background-color: #13b216;
+    color: #ffffff;
+}
+
+.pagination a:focus {
+    background-color: #13b216;
+    color: #ffffff;
+}
+
+
+.pagination .active a {
+    color: #ffffff;
+    cursor: default;
+}
+
+.pagination .disabled span,
+.pagination .disabled a,
+.pagination .disabled a:hover {
+    color: #999999;
+    background-color: transparent;
+    cursor: default;
+}
+
+.pagination li:first-child a {
+    border-left-width: 1px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+
+.pagination li:last-child a {
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.pagination-centered {
+    text-align: center;
+}
+
+.pagination-right {
+    text-align: right;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #287721;
+    background-color: #eee;
+    border-color: #ddd;
 }
 
 .footer-basic-centered{

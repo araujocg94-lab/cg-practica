@@ -16,6 +16,8 @@
 require_once("libraries/password_compatibility_library.php");
 
 require_once("config/db.php");
+require_once ("config/conexion.php");
+
 require_once("classes/Login.php");
 
 $login = new Login();
@@ -32,19 +34,40 @@ if ($login->isUserLoggedIn() == true) {
     <li class="<?php echo $active_ninos;?>"><a href="ninos.php"><i class='glyphicon glyphicon-barcode'></i> Niños</a></li>
     <li class="<?php echo $active_caballeros;?>"><a href="caballeros.php"><i class='glyphicon glyphicon-barcode'></i> Caballeros</a></li>
     <li class="<?php echo $active_damas;?>"><a href="damas.php"><i class='glyphicon glyphicon-barcode'></i> Damas</a></li>
+    <li class="<?php echo $active_ofertas;?>"><a href="ofertas.php"><i class='glyphicon glyphicon-barcode'></i> Ofertas</a></li>
       </ul>
       </li>
       </ul>
 
       <ul class="nav navbar-nav">
-        <li class="<?php echo $active_facturas;?>"><a href="facturas.php"><i class='glyphicon glyphicon-list-alt'></i> Facturas <span class="sr-only">(current)</span></a></li>
-        <li class="<?php echo $active_compras;?>"><a href="compras.php"><i  class='glyphicon glyphicon-usd'></i> Compras</a></li>
+      <?php
+                    $sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR 2");
+                    while ($rw=mysqli_fetch_array($sql_user)){
+                      $id_user=$rw["user_id"];
+                      if ($id_user==$_SESSION['user_id']){
+                        ?>
+                  <li class="<?php echo $active_facturas;?>"><a href="facturas.php"><i class='glyphicon glyphicon-list-alt'></i> Facturas</a></li>
+                  <li class="<?php echo $active_compras;?>"><a href="compras.php"><i  class='glyphicon glyphicon-usd'></i> Compras</a></li>               
+                   <?php
+                      } 
+                    }
+                  ?>
+    
         <li class="<?php echo $active_productos;?>"><a href="productos.php"><i class='glyphicon glyphicon-barcode'></i> Productos</a></li>
 		    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
-         <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-user'></i> Proveedores</a></li>
-		    <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-lock'></i> Usuarios</a></li>
-       </ul>
-
+         <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-user'></i> Proveedores</a></li>               <?php
+                    $sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
+                    while ($rw=mysqli_fetch_array($sql_user)){
+                      $id_user=$rw["user_id"];
+                      if ($id_user==$_SESSION['user_id']){
+                        ?>
+              <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-lock'></i> Usuarios</a></li>
+               
+                   <?php
+                      } 
+                    }
+                  ?>
+ </ul>
       <ul class="nav navbar-nav navbar-right">
     <li><a href="index.php?logout"><i class='glyphicon glyphicon-off'></i> Salir</a></li>
       </ul>
@@ -60,6 +83,7 @@ if ($login->isUserLoggedIn() == true) {
     <li class="<?php echo $active_ninos;?>"><a href="ninos.php"><i class='glyphicon glyphicon-barcode'></i> Niños</a></li>
     <li class="<?php echo $active_caballeros;?>"><a href="caballeros.php"><i class='glyphicon glyphicon-barcode'></i> Caballeros</a></li>
     <li class="<?php echo $active_damas;?>"><a href="damas.php"><i class='glyphicon glyphicon-barcode'></i> Damas</a></li>
+     <li class="<?php echo $active_ofertas;?>"><a href="ofertas.php"><i class='glyphicon glyphicon-barcode'></i> Ofertas</a></li>
      </ul>
 
 

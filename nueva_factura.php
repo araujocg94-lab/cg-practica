@@ -51,7 +51,7 @@
 						<div class="form-group row">
 							<label for="empresa" class="col-md-1 control-label">Vendedor</label>
 							<div class="col-md-2">
-								<select class="form-control input-sm" id="id_vendedor">
+								<select class="form-control input-sm" id="id_vendedor" disabled="true">
 									<?php
 										$sql_vendedor=mysqli_query($con,"select * from users order by apellido");
 										while ($rw=mysqli_fetch_array($sql_vendedor)){

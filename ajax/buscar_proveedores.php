@@ -115,16 +115,31 @@
 						
 					<td ><span class="pull-right">
 					<a href="#" class='btn btn-success' title='Editar proveedor' onclick="obtener_datos('<?php echo $id_prov;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-					<a href="#" class='btn btn-danger' title='Borrar proveedor' onclick="eliminar('<?php echo $id_prov; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<?php
+
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
+                    	while ($rw=mysqli_fetch_array($sql_user)){
+                      	$id_user=$rw["user_id"];
+                      	if ($id_user==$_SESSION['user_id']){
+                        ?>
+					<a href="#" class='btn btn-danger' title='Borrar proveedor' onclick="eliminar('<?php echo $id_prov; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span>
+					<?php
+                      } 
+                    }
+                  ?>
+
+					</td>
 						
 					</tr>
 					<?php
 				}
 				?>
 				<tr>
-					<td colspan=7><span class="pull-right"><?
+					<td colspan=4><span class="pull-right">
+					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
+					<td colspan=4></td>
 				</tr>
 			  </table>
 			</div>

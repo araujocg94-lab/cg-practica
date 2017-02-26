@@ -45,8 +45,8 @@
 				<tr  class="warning">
 					<th>Código</th>
 					<th>Producto</th>
-					<th><span class="pull-right">Cant.</span></th>
-					<th><span class="pull-right">costo</span></th>
+					<th><span class="pull-right">Cantidad</span></th>
+					<th><span class="pull-right">Costo</span></th>
 					<th class='text-center' style="width: 36px;">Agregar</th>
 				</tr>
 				<?php
@@ -55,7 +55,6 @@
 					$codigo_producto=$row['codigo_producto'];
 					$nombre_producto=$row['nombre_producto'];
 					$costo_compra=$row["costo_producto"];
-					$costo_compra=number_format($costo_compra,2);
 					?>
 					<tr>
 						<td><?php echo $codigo_producto; ?></td>
@@ -65,7 +64,7 @@
 						<input type="text" class="form-control" style="text-align:right" id="cantidad_<?php echo $id_producto; ?>"  value="1" >
 						</div></td>
 						<td class='col-xs-2'><div class="pull-right">
-						<input type="text" class="form-control" style="text-align:right" id="costo_compra_<?php echo $id_producto; ?>"  value="<?php echo $costo_compra;?>" >
+						<input type="text" class="form-control" style="text-align:right" id="costo_compra_<?php echo $id_producto; ?>"  value="<?php echo $costo_compra;?>" readonly>
 						</div></td>
 						<td class='text-center'><a class='btn btn-success' href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="glyphicon glyphicon-plus"></i></a></td>
 					</tr>
@@ -73,7 +72,8 @@
 				}
 				?>
 				<tr>
-					<td colspan=5><span class="pull-right"><?
+					<td colspan=4><span class="pull-right">
+					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
 				</tr>

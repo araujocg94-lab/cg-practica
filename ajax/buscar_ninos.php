@@ -4,14 +4,7 @@
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
-	if (isset($_GET['id'])){
-		$id_producto=intval($_GET['id']);
-		$query=mysqli_query($con, "select * from detalle_cotizacion_demo where id_producto='".$id_producto."'");
-		$count=mysqli_num_rows($query);
-		?>
 	
-			<?php
-		}
 	if($action == 'ajax'){
 		// quitar html/javascript 
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
@@ -42,7 +35,7 @@
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './ninos.php';
 		//consulta para odtener datos
-		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
+		$sql="SELECT * FROM  $sTable Where tipo_producto= '1' or tipo_producto='0' LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 		//enlazar datos odtenidos
 		if ($numrows>0){
@@ -66,16 +59,19 @@
 						$descuento_producto=$row['descuento_producto'];
 						$precio_producto=$row['precio_producto'];
 					?>
-					<input type="hidden" value="<?php echo $codigo_producto;?>" id="codigo_producto<?php echo $id_producto;?>">
-					<input type="hidden" value="<?php echo $nombre_producto;?>" id="nombre_producto<?php echo $id_producto;?>">
-					<input type="hidden" value="<?php echo $estado;?>" id="estado<?php echo $id_producto;?>">
-					<input type="hidden" value="<?php echo number_format($precio_producto,2,'.','');?>" id="precio_producto<?php echo $id_producto;?>">
 					
   					<div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="media/ropanino.jpg" alt="">
+                            <img src="<?php echo $imagen_producto; ?>" style="height:200px; width:200px;">
                             <div class="caption">
                                 <h4 class="pull-right"><?php echo number_format($precio_producto,2);?>Bs.</h4>
+                                <?php
+                            		if ($descuento_producto > 0) {
+                            	?>
+                            		<h5 class="pull-right"><strike><?php echo number_format($precio_producto,2);?>Bs.</strike></h5>	
+                            	<?php
+                           			 }
+                           		 ?>
                                 <h4><a href="#"><?php echo $nombre_producto; ?></a>
                                 </h4>
                                 <p><?php echo $descripcion_producto; ?> </p>
@@ -85,12 +81,12 @@
 					<?php
 				}
 				?>
-				<tr>
-					<td colspan=6><span class="pull-right"><?
-					 echo paginate($reload, $page, $total_pages, $adjacents);
-					?></span></td>
-				</tr>
 			</div>
+			<div class="col-md-4 col-md-offset-5"">
+					<?php
+					 echo paginate($reload, $page, $total_pages, $adjacents);
+					?>
+				</div>
 			<?php
 		}
 	}

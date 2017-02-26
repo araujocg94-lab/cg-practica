@@ -1,6 +1,6 @@
  <?php
-    $active_caballeros="active";  
-   $title="MODACHIKOS Caballeros";
+    $active_ofertas="active";  
+   $title="MODACHIKOS Ofertas";
     /* Conectarse a la bd*/
     require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
     require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -77,5 +77,5 @@
     include("footer.php");
     ?>
   </body>
-  <script type="text/javascript" src="js/caballeros.js"></script>
+  <script type="text/javascript" src="js/ofertas.js"></script>
 </html>

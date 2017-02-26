@@ -95,7 +95,7 @@
 						$user_tipo=$row['user_tipo'];
 						if ($user_tipo==0){$text_tipo="Empleado";$label_class='label-success';}
 						elseif ($user_tipo==1) {$text_tipo="Admin";$label_class='label-danger';}
-						elseif ($user_tipo==2) {$text_tipo="Cliente";$label_class='label-warning';}	
+						elseif ($user_tipo==2) {$text_tipo="Vendedor";$label_class='label-warning';}	
 						$user_tipo=$row['user_tipo'];
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						
@@ -116,18 +116,34 @@
 						<td><?php echo $date_added;?></td>
 						
 					<td ><span class="pull-right">
+
+					<?php
+
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
+                    	while ($rw=mysqli_fetch_array($sql_user)){
+                      	$id_user=$rw["user_id"];
+                      	if ($id_user==$_SESSION['user_id']){
+                        ?>
 					<a href="#" class='btn btn-success' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 					<a href="#" class='btn btn-warning' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><i class="glyphicon glyphicon-cog"></i></a>
-					<a href="#" class='btn btn-danger' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<a href="#" class='btn btn-danger' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>              
+                   <?php
+                      } 
+                    }
+                  ?>
+
+					</span></td>
 						
 					</tr>
 					<?php
 				}
 				?>
 				<tr>
-					<td colspan=9><span class="pull-right"><?
+					<td colspan=5><span class="pull-right">
+					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
+					<td colspan=4></td>
 				</tr>
 			  </table>
 			</div>
