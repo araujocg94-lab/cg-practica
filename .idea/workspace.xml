@@ -2,43 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34f27894-25c1-4aa2-8e6d-8fd09e88ca5c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/_tcpdf_5.0.002/fonts/utils/freetype6.dll" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/_tcpdf_5.0.002/fonts/utils/pfm2afm.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/_tcpdf_5.0.002/fonts/utils/ttf2ufm.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pdf/_tcpdf_5.0.002/fonts/utils/zlib1.dll" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prueba (1).sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tet (2).sql" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/agregar_facturacion.php" afterPath="$PROJECT_DIR$/ajax/agregar_facturacion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/agregar_impcompra.php" afterPath="$PROJECT_DIR$/ajax/agregar_impcompra.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_caballeros.php" afterPath="$PROJECT_DIR$/ajax/buscar_caballeros.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_clientes.php" afterPath="$PROJECT_DIR$/ajax/buscar_clientes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_compras.php" afterPath="$PROJECT_DIR$/ajax/buscar_compras.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_damas.php" afterPath="$PROJECT_DIR$/ajax/buscar_damas.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_facturas.php" afterPath="$PROJECT_DIR$/ajax/buscar_facturas.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_ninos.php" afterPath="$PROJECT_DIR$/ajax/buscar_ninos.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_productos.php" afterPath="$PROJECT_DIR$/ajax/buscar_productos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_proveedores.php" afterPath="$PROJECT_DIR$/ajax/buscar_proveedores.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/buscar_usuarios.php" afterPath="$PROJECT_DIR$/ajax/buscar_usuarios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/editar_producto.php" afterPath="$PROJECT_DIR$/ajax/editar_producto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/nuevo_producto.php" afterPath="$PROJECT_DIR$/ajax/nuevo_producto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/pagination.php" afterPath="$PROJECT_DIR$/ajax/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/productos_compra.php" afterPath="$PROJECT_DIR$/ajax/productos_compra.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/productos_factura.php" afterPath="$PROJECT_DIR$/ajax/productos_factura.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/caballeros.php" afterPath="$PROJECT_DIR$/caballeros.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/db.php" afterPath="$PROJECT_DIR$/config/db.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/custom.css" afterPath="$PROJECT_DIR$/css/custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/imagen_producto.php" afterPath="$PROJECT_DIR$/ajax/imagen_producto.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modal/editar_productos.php" afterPath="$PROJECT_DIR$/modal/editar_productos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modal/registro_productos.php" afterPath="$PROJECT_DIR$/modal/registro_productos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/navbar.php" afterPath="$PROJECT_DIR$/navbar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nueva_compra.php" afterPath="$PROJECT_DIR$/nueva_compra.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nueva_factura.php" afterPath="$PROJECT_DIR$/nueva_factura.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pdf/documentos/res/compra_html.php" afterPath="$PROJECT_DIR$/pdf/documentos/res/compra_html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/productos.php" afterPath="$PROJECT_DIR$/productos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modal/imagen_productos.php" afterPath="$PROJECT_DIR$/modal/imagen_productos.php" />
     </list>
     <ignored path="tetr corregido.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,11 +30,31 @@
       <file leaf-file-name="imagen_productos.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modal/imagen_productos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
               <folding>
-                <marker date="1488118828000" expanded="true" signature="61:104" placeholder="select * fro... productos" />
+                <marker date="1488134736754" expanded="true" signature="61:104" placeholder="select * fro... productos" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="productos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/productos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="132" column="27" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imagen_producto.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ajax/imagen_producto.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -73,6 +64,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/modal/imagen_productos.php" />
+      </list>
+    </option>
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
@@ -80,10 +78,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1260" />
-    <option name="height" value="688" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -128,20 +126,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tetr corregido" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tetr corregido" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -151,6 +135,48 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Development\tetr corregido\modal" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.imagen_productos.php">
+    <configuration default="false" name="imagen_productos.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tetr corregido/modal/imagen_productos.php">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.imagen_productos.php" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.imagen_productos.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -162,34 +188,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488133761883</updated>
-      <workItem from="1488133763929" duration="46000" />
+      <workItem from="1488133763929" duration="1554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46000" />
+    <option name="totallyTimeSpent" value="1554000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1260" height="688" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -200,12 +226,28 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ajax/imagen_producto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/productos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="132" column="27" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modal/imagen_productos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="374">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
-            <marker date="1488118828000" expanded="true" signature="61:104" placeholder="select * fro... productos" />
+            <marker date="1488134736754" expanded="true" signature="61:104" placeholder="select * fro... productos" />
           </folding>
         </state>
       </provider>

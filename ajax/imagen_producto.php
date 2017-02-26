@@ -26,11 +26,11 @@
 				/* Fin Validacion*/
 				if ($imageFileZise>0){
 					move_uploaded_file($_FILES["imagefile"]["tmp_name"], $target_file);
-					$logo_update="imagen_producto='img/$image_name' ";
-				
+					$logo_update="imagen_producto='img/$image_name' ";			
 				}	else { $logo_update="";}
                     $sql = "UPDATE productos SET $logo_update WHERE id_producto='1';";
                     $query_new_insert = mysqli_query($con,$sql);
+
 
                    
                     if ($query_new_insert) {

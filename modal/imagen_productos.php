@@ -24,7 +24,7 @@
 					<div class="row">
   						<div class="col-md-12">
 							<div class="form-group">
-							   <input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" onchange="upload_image();">
+							   <input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" >
 							</div>
 						</div>
 					</div>
@@ -32,7 +32,7 @@
 
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-			<button type="submit" class="btn btn-success" id="actualizar_imagen">Actualizar datos</button>
+			<button type="submit" class="btn btn-success" id="actualizar_imagen" onclick="upload_image();">Actualizar datos</button>
 		  </div>
 		  </form>
 		</div>

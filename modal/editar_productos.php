@@ -13,6 +13,11 @@
 		  <div class="modal-body">
 			<form class="form-horizontal" method="post" enctype="multipart/form-data" id="editar_producto"  name="editar_producto">
 			<div id="resultados_ajax2"></div>
+				<div class="form-group">
+				<div class="col-sm-8" id="load_img">
+					<img class="img-responsive" src="mod_imagen" alt="Logo">
+				</div>
+				</div>
 			  <div class="form-group">
 				<label for="mod_codigo" class="col-sm-3 control-label">Código</label>
 				<div class="col-sm-8">
@@ -32,12 +37,15 @@
 				  <textarea class="form-control" id="mod_descripcion" name="mod_descripcion" placeholder="Descripción del producto" required></textarea>
 				</div>
 			  </div>
-			  <div class="form-group">
-				<label for="mod_imagen" class="col-sm-3 control-label">Imagen</label>
-				<div class="col-sm-8">
-				  <input type="file"  id="mod_imagen" name="mod_imagen">
+
+				<div class="form-group">
+					<label for="mod_imagen" class="col-sm-3 control-label">Imagen</label>
+					<div class="col-sm-8">
+						<input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" >
+					</div>
 				</div>
-			  </div>
+
+
 			  <div class="form-group">
 				<label for="mod_cantidad" class="col-sm-3 control-label">Cantidad</label>
 				<div class="col-sm-8">
@@ -47,9 +55,9 @@
 			  <div class="form-group">
 				<label for="mod_tipo" class="col-sm-3 control-label">Tipo</label>
 				<div class="col-sm-8">
-				 <select class="form-control" id="mod_estado" name="mod_estado" required>
+				 <select class="form-control" id="mod_tipo" name="mod_tipo" required>
 					<option value="">-- Selecciona estado --</option>
-					<option value="0" selected>Unisex</option>
+					<option value="0" >Unisex</option>
 					<option value="2">Dama</option>
 					<option value="3">Caballero</option>
 					<option value="1">niño</option>
@@ -78,7 +86,7 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-			<button type="submit" class="btn btn-success" id="actualizar_datos">Actualizar datos</button>
+			<button type="submit" class="btn btn-success" id="actualizar_datos" onclick="upload_image();">Actualizar datos</button>
 		  </div>
 		  </form>
 		</div>

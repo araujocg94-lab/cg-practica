@@ -28,7 +28,7 @@
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
 		$descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_descripcion"],ENT_QUOTES)));
 		// imagen
-		$imagen=intval($_POST['mod_imagen']); 
+		$imagen=intval($_FILES['mod_imagen']); 
 		$cantidad=intval($_POST['mod_cantidad']);
 		$tipo=intval($_POST['mod_tipo']);
 		$costo_compra=floatval($_POST['mod_costo']);

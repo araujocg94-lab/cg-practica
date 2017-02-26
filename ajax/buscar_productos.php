@@ -95,6 +95,7 @@
 						$id_producto=$row['id_producto'];
 						$codigo_producto=$row['codigo_producto'];
 						$nombre_producto=$row['nombre_producto'];
+						$descripcion_producto=$row['descripcion_producto'];
 						$imagen_producto=$row['imagen_producto'];
 						$cantidad_producto=$row['cantidad_producto'];
 						$tipo_producto=$row['tipo_producto'];
@@ -110,6 +111,8 @@
 					
 					<input type="hidden" value="<?php echo $codigo_producto;?>" id="codigo_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo $nombre_producto;?>" id="nombre_producto<?php echo $id_producto;?>">
+					<input type="hidden" value="<?php echo $descripcion_producto;?>" id="descripcion_producto<?php echo $id_producto;?>">
+					<input type="hidden" value="<?php echo $imagen_producto;?>" id="imagen_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo $cantidad_producto;?>" id="cantidad_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo $tipo_producto;?>" id="tipo_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo number_format($costo_producto,2,'.','');?>" id="costo_producto<?php echo $id_producto;?>">
