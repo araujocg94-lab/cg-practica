@@ -15,7 +15,7 @@
 			<div id="resultados_ajax2"></div>
 				<div class="form-group">
 				<div class="col-sm-8" id="load_img">
-					<img class="img-responsive" src="mod_imagen" alt="Logo">
+					<img class="img-responsive" src="../mod_imagen" alt="Logo">
 				</div>
 				</div>
 			  <div class="form-group">
@@ -45,7 +45,6 @@
 					</div>
 				</div>
 
-
 			  <div class="form-group">
 				<label for="mod_cantidad" class="col-sm-3 control-label">Cantidad</label>
 				<div class="col-sm-8">
@@ -57,10 +56,10 @@
 				<div class="col-sm-8">
 				 <select class="form-control" id="mod_tipo" name="mod_tipo" required>
 					<option value="">-- Selecciona estado --</option>
-					<option value="0" >Unisex</option>
-					<option value="2">Dama</option>
-					<option value="3">Caballero</option>
+					<option value="0" selected>Unisex</option>
 					<option value="1">niño</option>
+					<option value="2">Caballero</option>
+					<option value="3">Dama</option>
 				  </select>
 				</div>
 			  </div>

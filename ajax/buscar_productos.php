@@ -133,8 +133,6 @@
 						<td><span class='pull-right'><?php echo number_format($descuento_producto,2);?>Bs.</span></td>
 					<td ><span class="pull-right">
 
-					<a href="#" class='btn btn-warning' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal3"><i class="glyphicon glyphicon-edit"></i></a>
-
 					<a href="#" class='btn btn-success' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 
 					<a href="#" class='btn btn-danger' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
