@@ -66,25 +66,41 @@
   </body>
 </html>
 <script>
-$( "#guardar_producto" ).submit(function( event ) {
-  $('#guardar_datos').attr("disabled", true);
-  
- var parametros = $(this).serialize();
-	 $.ajax({
-			type: "POST",
-			url: "ajax/nuevo_producto.php",
-			data: parametros,
-			 beforeSend: function(objeto){
-				$("#resultados_ajax_productos").html("Mensaje: Cargando...");
-			  },
+
+$(document).ready(function(){
+	// $("#editar_producto").ajaxForm(function(e){
+	// 	$("#resultados_ajax2").html(e);
+	// });
+	$("#guardar_producto").ajaxForm({
+		 beforeSend: function(objeto){
+			$("#resultados_ajax_productos").html("Mensaje: Cargando...");
+		  },
 			success: function(datos){
-			$("#resultados_ajax_productos").html(datos);
-			$('#guardar_datos').attr("disabled", false);
-			load(1);
+				$("#resultados_ajax_productos").html(datos);
+				$('#guardar_datos').attr("disabled", false);
+				load(1);
 		  }
 	});
-  event.preventDefault();
-})
+});
+// $( "#guardar_producto" ).submit(function( event ) {
+//   $('#guardar_datos').attr("disabled", true);
+  
+//  var parametros = $(this).serialize();
+// 	 $.ajax({
+// 			type: "POST",
+// 			url: "ajax/nuevo_producto.php",
+// 			data: parametros,
+// 			 beforeSend: function(objeto){
+// 				$("#resultados_ajax_productos").html("Mensaje: Cargando...");
+// 			  },
+// 			success: function(datos){
+// 			$("#resultados_ajax_productos").html(datos);
+// 			$('#guardar_datos').attr("disabled", false);
+// 			load(1);
+// 		  }
+// 	});
+//   event.preventDefault();
+// })
 
 $(document).ready(function(){
 	// $("#editar_producto").ajaxForm(function(e){

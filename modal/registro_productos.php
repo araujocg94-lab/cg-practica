@@ -11,7 +11,7 @@
 			<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Agregar nuevo producto</h4>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-horizontal" method="post" enctype="multipart/form-data" id="guardar_producto" name="guardar_producto">
+			<form class="form-horizontal" method="post" action="ajax/nuevo_producto.php" enctype="multipart/form-data" id="guardar_producto" name="guardar_producto">
 			<div id="resultados_ajax_productos"></div>
 			  <div class="form-group">
 				<label for="codigo" class="col-sm-3 control-label">Código</label>
@@ -32,16 +32,11 @@
 					<textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción del producto" maxlength="255" ></textarea>
 				</div>
 			  </div>
-				<div class="form-group " align="center"> 
-					<div id="load_img">
-						<img class="img-responsive" src="" alt="Logo">
-					</div>
 			   <div class="form-group">
 				<label for="imagen" class="col-sm-3 control-label">Imagen</label>
 				<div class="col-sm-8">
-				  <input type="file"  id="imagen" name="imagen" onchange="upload_image();">
+				  <input type="file"  id="imagen" name="imagen">
 				</div>
-			  </div>
 			  </div>
 			 <div class="form-group">
 				<label for="tipo" class="col-sm-3 control-label">Tipo</label>

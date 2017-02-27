@@ -26,11 +26,11 @@
 				$target_dir="../img/";
 
 				$extension= explode(".",basename($_FILES["imagefile"]["name"]));
-				$image_name = $_POST['mod_id'].".".$extension[1];
+				$image_name = $_POST['mod_codigo'].".".$extension[1];
 
 				// $codigo
 				$target_file = $target_dir . $image_name;
-				
+
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 				$imageFileZise=$_FILES["imagefile"]["size"];
 				
@@ -45,7 +45,7 @@
 				}  else {
 				/* Fin Validacion*/
 				if ($imageFileZise>0){
-					if (!file_exists($target_file)) {
+					if (file_exists($target_file)) {
 						unlink($target_file);
 					}
 					move_uploaded_file($_FILES["imagefile"]["tmp_name"], $target_file);

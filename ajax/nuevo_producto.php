@@ -21,6 +21,39 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 			$_POST['tipo']!="" &&
 			!empty($_POST['precio'])
 		){
+
+			if (isset($_FILES["imagen"])){
+
+				$target_dir="../img/";
+
+				$extension= explode(".",basename($_FILES["imagen"]["name"]));
+				$image_name = $_POST['codigo'].".".$extension[1];
+
+				// $codigo
+				$target_file = $target_dir . $image_name;
+
+				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+				$imageFileZise=$_FILES["imagen"]["size"];
+				
+				$logo_update="";	
+				
+				/* Inicio Validacion*/
+				// Allow certain file formats
+				if(($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
+				$errors[]= "<p>Lo sentimos, sólo se permiten archivos JPG , JPEG, PNG y GIF.</p>";
+				} else if ($imageFileZise > 4194304) {//1048576 byte=1MB
+				$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 1MB</p>";
+				}  else {
+				/* Fin Validacion*/
+				if ($imageFileZise>0){
+					if (file_exists($target_file)) {
+						unlink($target_file);
+					}
+					move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file);
+					$logo_update='img/'.$image_name;			
+				}	else { $logo_update="";}
+			}
+		}
 		/* Conectarse a la bd*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -34,22 +67,12 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		$descuento_venta=floatval($_POST['descuento']);
 		$precio_venta=floatval($_POST['precio']);
 		$date_added=date("Y-m-d H:i:s");
-		$ruta = $_FILES['imagen']['tmp_name'];
-		$examinar = $_FILES['imagen']['name'];
 
-	// $type = explode('.', $_FILES['imagen']['name']);
-	// $type = $type[count($type)-1];		
-	// $url = '../imagen/'.uniqid(rand()).'.'.$type;
-	// if(in_array($type, array('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'))) {
-	// 	if(is_uploaded_file($_FILES['imagen']['tmp_name'])) {			
-	// 		if(move_uploaded_file($_FILES['imagen']['tmp_name'], $url)) 
-	// 	{
-		$sql="INSERT INTO productos (codigo_producto, nombre_producto, descripcion_producto, imagen_producto, cantidad_producto, tipo_producto, date_added, costo_producto, descuento_producto, precio_producto) VALUES ('$codigo','$nombre', '$descripcion', '$examinar','$cantidad','$tipo','$date_added','$costo_compra', '$descuento_venta','$precio_venta')";
+		$sql="INSERT INTO productos (codigo_producto, nombre_producto, descripcion_producto, imagen_producto, cantidad_producto, tipo_producto, date_added, costo_producto, descuento_producto, precio_producto) VALUES ('$codigo','$nombre', '$descripcion', '$logo_update','$cantidad','$tipo','$date_added','$costo_compra', '$descuento_venta','$precio_venta')";
 		$query_new_insert = mysqli_query($con,$sql);
 
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
-				move_uploaded_file($ruta, '../imagen/'.$examinar);
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
