@@ -62,6 +62,7 @@
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/productos.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
   </body>
 </html>
 <script>
@@ -85,77 +86,42 @@ $( "#guardar_producto" ).submit(function( event ) {
   event.preventDefault();
 })
 
-$( "#editar_producto" ).submit(function( event ) {
-  $('#actualizar_datos').attr("disabled", true);
-  
- var parametros = $(this).serialize();
-	 $.ajax({
-			type: "POST",
-			url: "ajax/editar_producto.php",
-			data: parametros,
-			 beforeSend: function(objeto){
-				$("#resultados_ajax2").html("Mensaje: Cargando...");
-			  },
+$(document).ready(function(){
+	// $("#editar_producto").ajaxForm(function(e){
+	// 	$("#resultados_ajax2").html(e);
+	// });
+	$("#editar_producto").ajaxForm({
+		 beforeSend: function(objeto){
+			$("#resultados_ajax2").html("Mensaje: Cargando...");
+		  },
 			success: function(datos){
-			$("#resultados_ajax2").html(datos);
-			$('#actualizar_datos').attr("disabled", false);
-			load(1);
+				$("#resultados_ajax2").html(datos);
+				$('#actualizar_datos').attr("disabled", false);
+				load(1);
 		  }
 	});
-  event.preventDefault();
-})
+});
 
-	function obtener_datos(id){
-			var codigo_producto = $("#codigo_producto"+id).val();
-			var nombre_producto = $("#nombre_producto"+id).val();
-			var descripcion_producto = $("#descripcion_producto"+id).val();
-			var imagen_producto = $("#imagen_producto"+id).val();
-			var cantidad_producto = $("#cantidad_producto"+id).val();
-			var tipo_producto = $("#tipo_producto"+id).val();
-			var descuento_producto = $("#descuento_producto"+id).val();
-			var precio_producto = $("#precio_producto"+id).val();
-			var costo_producto = $("#costo_producto"+id).val();
-			$("#mod_id").val(id);
-			$("#mod_codigo").val(codigo_producto);
-			$("#mod_nombre").val(nombre_producto);
-			$("#mod_descripcion").val(descripcion_producto);
-			$("#mod_imagen").val(imagen_producto);
-			$("#mod_cantidad").val(cantidad_producto);
-			$("#mod_tipo").val(tipo_producto);
-			$("#mod_descuento").val(descuento_producto);
-			$("#mod_precio").val(precio_producto);
-			$("#mod_costo").val(costo_producto);
-		}
+function obtener_datos(id){
+		var codigo_producto = $("#codigo_producto"+id).val();
+		var nombre_producto = $("#nombre_producto"+id).val();
+		var descripcion_producto = $("#descripcion_producto"+id).val();
+		var imagen_producto = $("#imagen_producto"+id).val();
+		var cantidad_producto = $("#cantidad_producto"+id).val();
+		var tipo_producto = $("#tipo_producto"+id).val();
+		var descuento_producto = $("#descuento_producto"+id).val();
+		var precio_producto = $("#precio_producto"+id).val();
+		var costo_producto = $("#costo_producto"+id).val();
+		$("#mod_id").val(id);
+		$("#mod_codigo").val(codigo_producto);
+		$("#mod_nombre").val(nombre_producto);
+		$("#mod_descripcion").val(descripcion_producto);
+		$("#mod_imagen").val(imagen_producto);
+		$("#mod_cantidad").val(cantidad_producto);
+		$("#mod_tipo").val(tipo_producto);
+		$("#mod_descuento").val(descuento_producto);
+		$("#mod_precio").val(precio_producto);
+		$("#mod_costo").val(costo_producto);
+	}
 
 </script>
-
-<script>
-		function upload_image(){
-				
-				var inputFileImage = document.getElementById("imagefile");
-				var file = inputFileImage.files[0];
-				if( (typeof file === "object") && (file !== null) )
-				{
-					$("#load_img").text('Cargando...');	
-					var data = new FormData();
-					data.append('imagefile',file);
-					
-					
-					$.ajax({
-						url: "ajax/imagen_producto.php",        // Url to which the request is send
-						type: "POST",             // Type of request to be send, called as method
-						data: data, 			  // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-						contentType: false,       // The content type used when sending data to the server.
-						cache: false,             // To unable request pages to be cached
-						processData:false,        // To send DOMDocument or non processed data file it is set to false
-						success: function(data)   // A function to be called if request succeeds
-						{
-							$("#load_img").html(data);
-							
-						}
-					});	
-				}
-				
-				
-			}
-    </script>

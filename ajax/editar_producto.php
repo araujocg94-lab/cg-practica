@@ -20,6 +20,32 @@
 			$_POST['mod_tipo']!="" &&
 			!empty($_POST['mod_precio'])
 		){
+
+			if (isset($_FILES["imagefile"])){
+
+				$target_dir="../img/";
+				$image_name = time()."_".basename($_FILES["imagefile"]["name"]);
+				// $codigo
+				$target_file = $target_dir . $image_name;
+				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+				$imageFileZise=$_FILES["imagefile"]["size"];
+				
+				$logo_update="";	
+				
+				/* Inicio Validacion*/
+				// Allow certain file formats
+				if(($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
+				$errors[]= "<p>Lo sentimos, sólo se permiten archivos JPG , JPEG, PNG y GIF.</p>";
+				} else if ($imageFileZise > 1048576) {//1048576 byte=1MB
+				$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 1MB</p>";
+				}  else {
+				/* Fin Validacion*/
+				if ($imageFileZise>0){
+					move_uploaded_file($_FILES["imagefile"]["tmp_name"], $target_file);
+					$logo_update='img/'.$image_name;			
+				}	else { $logo_update="";}
+			}
+		}
 		/* Conectarce a la bd*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -28,14 +54,25 @@
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
 		$descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_descripcion"],ENT_QUOTES)));
 		// imagen
-		$imagen=intval($_FILES['mod_imagen']); 
+
 		$cantidad=intval($_POST['mod_cantidad']);
 		$tipo=intval($_POST['mod_tipo']);
 		$costo_compra=floatval($_POST['mod_costo']);
 		$descuento_venta=floatval($_POST['mod_descuento']);
 		$precio_venta=floatval($_POST['mod_precio']);
 		$id_producto=$_POST['mod_id'];
-		$sql="UPDATE productos SET codigo_producto='".$codigo."', nombre_producto='".$nombre."', descripcion_producto='".$descripcion."',imagen_producto='".$imagen."', cantidad_producto='".$cantidad."', tipo_producto='".$tipo."', costo_producto='".$costo_compra."', descuento_producto='".$descuento_venta."', precio_producto='".$precio_venta."' WHERE id_producto='".$id_producto."'";
+		$sql="UPDATE productos SET 
+			codigo_producto='".$codigo."',
+			nombre_producto='".$nombre."', 
+			descripcion_producto='".$descripcion."', 
+			imagen_producto='".$logo_update."', 
+			cantidad_producto='".$cantidad."', 
+			tipo_producto='".$tipo."', 
+			costo_producto='".$costo_compra."', 
+			descuento_producto='".$descuento_venta."', 
+			precio_producto='".$precio_venta."' 
+			WHERE id_producto='".$id_producto."'";
+
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Producto ha sido actualizado satisfactoriamente.";

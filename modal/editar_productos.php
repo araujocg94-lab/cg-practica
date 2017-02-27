@@ -11,7 +11,7 @@
 			<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Editar producto</h4>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-horizontal" method="post" enctype="multipart/form-data" id="editar_producto"  name="editar_producto">
+			<form class="form-horizontal" action="ajax/editar_producto.php" method="post" enctype="multipart/form-data" id="editar_producto"  name="editar_producto">
 			<div id="resultados_ajax2"></div>
 				<div class="form-group">
 				<div class="col-sm-8" id="load_img">
@@ -86,7 +86,7 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-			<button type="submit" class="btn btn-success" id="actualizar_datos" onclick="upload_image();">Actualizar datos</button>
+			<button type="submit" class="btn btn-success" id="actualizar_datos" >Actualizar datos</button>
 		  </div>
 		  </form>
 		</div>

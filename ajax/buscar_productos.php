@@ -119,7 +119,10 @@
 					<input type="hidden" value="<?php echo number_format($descuento_producto,2,'.','');?>" id="descuento_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo number_format($precio_producto,2,'.','');?>" id="precio_producto<?php echo $id_producto;?>">
 					<tr>
-						<td><img src="<?php echo $imagen_producto; ?>" style="height:50px; width:50px;"> </td>
+						<td><a href="<?php echo $imagen_producto; ?>" target="_blank" ">
+								<img src="<?php echo $imagen_producto; ?>" style="height:50px; width:50px;">
+							</a>
+						</td>
 						<td><?php echo $codigo_producto; ?></td>
 						<td ><?php echo $nombre_producto; ?></td>
 						<td ><?php echo $cantidad_producto; ?></td>
