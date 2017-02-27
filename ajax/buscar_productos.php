@@ -99,10 +99,10 @@
 						$imagen_producto=$row['imagen_producto'];
 						$cantidad_producto=$row['cantidad_producto'];
 						$tipo_producto=$row['tipo_producto'];
-						if ($tipo_producto==1){$tipo_producto="niño";}
-						elseif ($tipo_producto==2) { $tipo_producto="caballero";} 
-						elseif ($tipo_producto==3) { $tipo_producto="dama";} 
-						else {$tipo_producto="Unisex";}
+						if ($tipo_producto==1){$text_tipo="niño";}
+						elseif ($tipo_producto==2){$text_tipo="caballero";} 
+						elseif ($tipo_producto==3){$text_tipo="dama";} 
+						elseif ($tipo_producto==0){$text_tipo="Unisex";} 
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						$costo_producto=$row['costo_producto'];
 						$descuento_producto=$row['descuento_producto'];
@@ -114,10 +114,10 @@
 					<input type="hidden" value="<?php echo $descripcion_producto;?>" id="descripcion_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo $imagen_producto;?>" id="imagen_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo $cantidad_producto;?>" id="cantidad_producto<?php echo $id_producto;?>">
-					<input type="hidden" value="<?php echo $tipo_producto;?>" id="tipo_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo number_format($costo_producto,2,'.','');?>" id="costo_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo number_format($descuento_producto,2,'.','');?>" id="descuento_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo number_format($precio_producto,2,'.','');?>" id="precio_producto<?php echo $id_producto;?>">
+					<input type="hidden" value="<?php echo $tipo_producto;?>" id="tipo_producto<?php echo $id_producto;?>">
 					<tr>
 						<td><a href="<?php echo $imagen_producto; ?>" target="_blank" ">
 								<img src="<?php echo $imagen_producto; ?>" style="height:50px; width:50px;">
@@ -126,7 +126,7 @@
 						<td><?php echo $codigo_producto; ?></td>
 						<td ><?php echo $nombre_producto; ?></td>
 						<td ><?php echo $cantidad_producto; ?></td>
-						<td><?php echo $tipo_producto;?></td>
+						<td><?php echo $text_tipo;?></td>
 						<td><?php echo $date_added;?></td>
 						<td><span class='pull-right'><?php echo number_format($costo_producto,2);?>Bs.</span></td>
 						<td><span class='pull-right'><?php echo number_format($precio_producto,2);?>Bs.</span></td>

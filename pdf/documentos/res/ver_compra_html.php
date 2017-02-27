@@ -36,19 +36,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 -->
 </style>
 <page backtop="15mm" backbottom="15mm" backleft="15mm" backright="15mm" style="font-size: 12pt; font-family: arial" >
-        <page_footer>
-        <table class="page_footer">
-            <tr>
 
-                <td style="width: 50%; text-align: left">
-                    P&aacute;gina [[page_cu]]/[[page_nb]]
-                </td>
-                <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "INVERSIONES RONMIGUEL, C.A "; echo  $anio=date('Y'); ?>
-                </td>
-            </tr>
-        </table>
-    </page_footer>
     <table cellspacing="0" style="width: 100%;">
         <tr>
 
@@ -74,13 +62,13 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
            <td style="width:20%;" class='midnight-green'>COMPRADO A</td>
-           <td style="width:10%;" class='midnight-green'>CI</td>
+           <td style="width:20%;" class='midnight-green'>CI</td>
            <td style="width:20%;" class='midnight-green'>DIRECCION</td>
-           <td style="width:10%;" class='midnight-green'>TELEFONO</td>
-           <td style="width:10%;" class='midnight-green'>E-MAIL</td>
+           <td style="width:20%;" class='midnight-green'>TELEFONO</td>
+           <td style="width:20%;" class='midnight-green'>E-MAIL</td>
         </tr>
 		<tr>
-           <td style="width:30%;" >
+           <td style="width:20%;" >
 			<?php 
 				$sql_prov=mysqli_query($con,"select * from proveedor where id_prov='$id_prov'");
 				$rw_prov=mysqli_fetch_array($sql_prov);
@@ -91,7 +79,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 		   	<td style="width:20%;"><?php echo $rw_prov['ci_prov'];?></td>
 		    <td style="width:20%;"><?php echo $rw_prov['direccion_prov'];?></td>
 		    <td style="width:20%;"><?php echo $rw_prov['telefono_prov'];?></td>
-		    <td style="width:30%;"><?php echo $rw_prov['email_prov'];?></td>
+		    <td style="width:20%;"><?php echo $rw_prov['email_prov'];?></td>
         </tr>
         
    
@@ -194,14 +182,20 @@ while ($row=mysqli_fetch_array($sql))
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>
         </tr>
     </table>
-	
-	
-	
-	<br>
-	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias por su compra!</div>
-	
-	
-	  
+
 
 </page>
 
+     <page_footer>
+        <table class="page_footer">
+            <tr>
+
+                <td style="width: 50%; text-align: left">
+                    P&aacute;gina [[page_cu]]/[[page_nb]]
+                </td>
+                <td style="width: 50%; text-align: right">
+                    &copy; <?php echo "INVERSIONES RONMIGUEL, C.A "; echo  $anio=date('Y'); ?>
+                </td>
+            </tr>
+        </table>
+    </page_footer>

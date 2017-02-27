@@ -124,20 +124,21 @@ function obtener_datos(id){
 		var descripcion_producto = $("#descripcion_producto"+id).val();
 		var imagen_producto = $("#imagen_producto"+id).val();
 		var cantidad_producto = $("#cantidad_producto"+id).val();
-		var tipo_producto = $("#tipo_producto"+id).val();
 		var descuento_producto = $("#descuento_producto"+id).val();
 		var precio_producto = $("#precio_producto"+id).val();
 		var costo_producto = $("#costo_producto"+id).val();
+		var tipo_producto = $("#tipo_producto"+id).val();
+
 		$("#mod_id").val(id);
 		$("#mod_codigo").val(codigo_producto);
 		$("#mod_nombre").val(nombre_producto);
 		$("#mod_descripcion").val(descripcion_producto);
 		$("#mod_imagen").val(imagen_producto);
 		$("#mod_cantidad").val(cantidad_producto);
-		$("#mod_tipo").val(tipo_producto);
 		$("#mod_descuento").val(descuento_producto);
 		$("#mod_precio").val(precio_producto);
 		$("#mod_costo").val(costo_producto);
+		$("#mod_tipo").val(tipo_producto);
 	}
 
 </script>

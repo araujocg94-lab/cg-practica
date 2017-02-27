@@ -62,9 +62,6 @@
 	?>
 	<script type="text/javascript" src="js/usuarios.js"></script>
 
-	
-	
-
 
   </body>
 </html>

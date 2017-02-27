@@ -15,7 +15,7 @@
 			<div id="resultados_ajax2"></div>
 				<div class="form-group">
 				<div class="col-sm-8" id="load_img">
-					<img class="img-responsive" src="../mod_imagen" alt="Logo">
+					<img class="img-responsive" src="imagefile" alt="Logo">
 				</div>
 				</div>
 			  <div class="form-group">
@@ -41,7 +41,7 @@
 				<div class="form-group">
 					<label for="mod_imagen" class="col-sm-3 control-label">Imagen</label>
 					<div class="col-sm-8">
-						<input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" >
+						<input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" required>
 					</div>
 				</div>
 
@@ -51,18 +51,9 @@
 				  <input type="text" class="form-control" id="mod_cantidad" name="mod_cantidad" placeholder="Cantidad del producto" required>
 				</div>
 			  </div>
-			  <div class="form-group">
-				<label for="mod_tipo" class="col-sm-3 control-label">Tipo</label>
-				<div class="col-sm-8">
-				 <select class="form-control" id="mod_tipo" name="mod_tipo" required>
-					<option value="">-- Selecciona estado --</option>
-					<option value="0" selected>Unisex</option>
-					<option value="1">niño</option>
-					<option value="2">Caballero</option>
-					<option value="3">Dama</option>
-				  </select>
-				</div>
-			  </div>
+
+		
+
 			   <div class="form-group">
 				<label for="mod_costo" class="col-sm-3 control-label">Costo</label>
 				<div class="col-sm-8">
@@ -79,6 +70,19 @@
 				<label for="mod_precio" class="col-sm-3 control-label">Precio</label>
 				<div class="col-sm-8">
 				  <input type="text" class="form-control" id="mod_precio" name="mod_precio" placeholder="Precio de venta del producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				</div>
+			  </div>
+
+			  <div class="form-group">
+				<label for="mod_tipo" class="col-sm-3 control-label">Tipo</label>
+				<div class="col-sm-8">
+				 <select class="form-control" id="mod_tipo" name="mod_tipo" required>
+					<option value="">-- Selecciona tipo --</option>
+					<option value="0" selected>Unisex</option>
+					<option value="1">niño</option>
+					<option value="2">Caballero</option>
+					<option value="3">Dama</option>
+				  </select>
 				</div>
 			  </div>
 			 

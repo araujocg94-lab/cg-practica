@@ -21,7 +21,9 @@
 			!empty($_POST['mod_precio'])
 		){
 
-			if (isset($_FILES["imagefile"])){
+		if (empty($_FILES["imagefile"])) {
+           $errors[] = "Imagen vacia";
+        }else if (!empty($_FILES["imagefile"])){
 
 				$target_dir="../img/";
 
