@@ -29,13 +29,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="media/ropanino.jpg" alt="">
+                                    <img class="slide-image" src="img/hombre.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                <img class="slide-image" src="media/ropanino.jpg" alt="">
+                                <img class="slide-image" src="img/joven.jpeg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="media/ropanino.jpg" alt="">
+                                    <img class="slide-image" src="img/caballero.jpg" alt="">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -58,14 +58,15 @@
             <form class="form-horizontal" role="form" id="datos_cotizacion">
                 
                         <div class="form-group row">
-                            <label for="q" class="col-md-2 control-label">Nombre</label>
-                            <div class="col-md-5">
-                                <input type="text" class="form-control" id="q" placeholder="Nombre del producto" onkeyup='load(1);'>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5 col-md-offset-4">
+                                <div class="input-group">
+                                <input type="text" class="form-control" id="q" placeholder="Buscar producto" onkeyup='load(1);'>
+                            <span class="input-group-btn">
                                 <button type="button" class="btn btn-success" onclick='load(1);'>
-                                    <span class="glyphicon glyphicon-search" ></span> Buscar</button>
+                                    <span class="glyphicon glyphicon-search" ></span></button> 
                                 <span id="loader"></span>
+                                </span>
+                            </div>
                             </div>
                             </div>
                             </form></div></div>

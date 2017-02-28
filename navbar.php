@@ -29,7 +29,7 @@ if ($login->isUserLoggedIn() == true) {
  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
       <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class='glyphicon glyphicon-user'></i> Moda<span class="caret"></span></a>
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class='  glyphicon glyphicon-asterisk'></i> Moda<span class="caret"></span></a>
        <ul class="dropdown-menu">
     <li class="<?php echo $active_ninos;?>"><a href="ninos.php"><i class='glyphicon glyphicon-barcode'></i> Niños</a></li>
     <li class="<?php echo $active_caballeros;?>"><a href="caballeros.php"><i class='glyphicon glyphicon-barcode'></i> Caballeros</a></li>
@@ -47,21 +47,21 @@ if ($login->isUserLoggedIn() == true) {
                       if ($id_user==$_SESSION['user_id']){
                         ?>
                   <li class="<?php echo $active_facturas;?>"><a href="facturas.php"><i class='glyphicon glyphicon-list-alt'></i> Facturas</a></li>
-                  <li class="<?php echo $active_compras;?>"><a href="compras.php"><i  class='glyphicon glyphicon-usd'></i> Compras</a></li>               
+                  <li class="<?php echo $active_compras;?>"><a href="compras.php"><i  class=' glyphicon glyphicon-shopping-cart'></i> Compras</a></li>               
                    <?php
                       } 
                     }
                   ?>
     
         <li class="<?php echo $active_productos;?>"><a href="productos.php"><i class='glyphicon glyphicon-barcode'></i> Productos</a></li>
-		    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
-         <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-user'></i> Proveedores</a></li>               <?php
+		    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-star-empty'></i> Clientes</a></li>
+         <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-star'></i> Proveedores</a></li>               <?php
                     $sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
                     while ($rw=mysqli_fetch_array($sql_user)){
                       $id_user=$rw["user_id"];
                       if ($id_user==$_SESSION['user_id']){
                         ?>
-              <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-lock'></i> Usuarios</a></li>
+              <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-user'></i> Usuarios</a></li>
                
                    <?php
                       } 

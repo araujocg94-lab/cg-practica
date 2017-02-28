@@ -65,8 +65,7 @@
 					<th>#</th>
 					<th>Fecha</th>
 					<th>Cliente</th>
-					<th>Vendedor</th>
-					<th>Estado</th>
+					<th class='text-center'>Vendedor</th>
 					<th class='text-right'>Total</th>
 					<th class='text-right'>Acciones</th>
 					
@@ -80,17 +79,13 @@
 						$telefono_cliente=$row['telefono_cliente'];
 						$email_cliente=$row['email_cliente'];
 						$nombre_vendedor=$row['nombre']." ".$row['apellido'];
-						$estado_factura=$row['estado_factura'];
-						if ($estado_factura==1){$text_estado="Pagada";$label_class='label-success';}
-						else{$text_estado="Pendiente";$label_class='label-warning';}
 						$total_venta=$row['total_venta'];
 					?>
 					<tr>
 						<td><?php echo $numero_factura; ?></td>
 						<td><?php echo $fecha; ?></td>
 						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_cliente;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_cliente;?>" ><?php echo $nombre_cliente;?></a></td>
-						<td><?php echo $nombre_vendedor; ?></td>
-						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
+						<td class='text-center'><?php echo $nombre_vendedor; ?></td>
 						<td class='text-right'><?php echo number_format ($total_venta,2); ?></td>					
 					<td class="text-right">
 						<a href="#" class='btn btn-success' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><i class="glyphicon glyphicon-download"></i></a> 

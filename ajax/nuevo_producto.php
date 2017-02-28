@@ -24,7 +24,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 
 			if (isset($_FILES["imagen"])){
 
-				$target_dir="../img/";
+				$target_dir="../catalogo/";
 
 				$extension= explode(".",basename($_FILES["imagen"]["name"]));
 				$image_name = $_POST['codigo'].".".$extension[1];
@@ -50,7 +50,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 						unlink($target_file);
 					}
 					move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file);
-					$logo_update='img/'.$image_name;			
+					$logo_update='catalogo/'.$image_name;			
 				}	else { $logo_update="";}
 			}
 		}

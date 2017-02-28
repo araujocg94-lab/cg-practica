@@ -25,7 +25,7 @@
            $errors[] = "Imagen vacia";
         }else if (!empty($_FILES["imagefile"])){
 
-				$target_dir="../img/";
+				$target_dir="../catalogo/";
 
 				$extension= explode(".",basename($_FILES["imagefile"]["name"]));
 				$image_name = $_POST['mod_codigo'].".".$extension[1];
@@ -51,7 +51,7 @@
 						unlink($target_file);
 					}
 					move_uploaded_file($_FILES["imagefile"]["tmp_name"], $target_file);
-					$logo_update='img/'.$image_name;			
+					$logo_update='catalogo/'.$image_name;			
 				}	else { $logo_update="";}
 			}
 		}

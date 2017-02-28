@@ -60,13 +60,19 @@
 						$precio_producto=$row['precio_producto'];
 						$total=$precio_producto-$descuento_producto;
 					?>
-
   					<div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-							<img src="<?php echo $imagen_producto; ?>" style="height:200px; width:200px;">                             							<div class="caption">
-                            <h4 class="pull-right"><?php echo number_format($total,2);?>Bs.</h4>
-                            <h5 class="pull-right"><strike><?php echo number_format($precio_producto,2);?>Bs.</strike></h5>
-                                
+                            <img src="<?php echo $imagen_producto; ?>" class="img-thumbnail">
+                             <hr>
+                            <div class="caption">
+                                <h4 class="pull-right"><?php echo number_format($total,2);?>Bs.</h4>
+                                <?php
+                            		if ($descuento_producto > 0) {
+                            	?>
+                            		<h5 class="pull-right"><strike><?php echo number_format($precio_producto,2);?>Bs.</strike></h5>	
+                            	<?php
+                           			 }
+                           		 ?>
                                 <h4><?php echo $nombre_producto; ?></h4>
                                 <p><?php echo $descripcion_producto; ?> </p>
                             </div>

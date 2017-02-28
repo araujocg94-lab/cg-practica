@@ -99,6 +99,28 @@
   height: 220px;
 }
 
+.thumbnail {
+color: #ecdbff;
+background-color: #159d19;
+}
+
+.thumbnail > img {
+  width: 250px; 
+  height: 250px;
+}
+
+.caption > p {
+color: #fcfcfc;
+}
+
+.caption > h4 {
+color: #fcfcfc;
+}
+
+.caption > h5 {
+color: #fcfcfc;
+}
+
 .pagination {
     height: 36px;
     margin: 18px 0;

@@ -65,8 +65,7 @@
 					<th>#</th>
 					<th>Fecha</th>
 					<th>Cliente</th>
-					<th>Vendedor</th>
-					<th>Estado</th>
+					<th class='text-center'>Vendedor</th>
 					<th class='text-right'>Total</th>
 					<th class='text-right'>Acciones</th>
 					
@@ -80,17 +79,13 @@
 						$telefono_prov=$row['telefono_prov'];
 						$email_prov=$row['email_prov'];
 						$nombre_vendedor=$row['nombre']." ".$row['apellido'];
-						$estado_compra=$row['estado_compra'];
-						if ($estado_compra==1){$text_estado="Pagada";$label_class='label-success';}
-						else{$text_estado="Pendiente";$label_class='label-warning';}
 						$total_compra=$row['total_compra'];
 					?>
 					<tr>
 						<td><?php echo $numero_compra; ?></td>
 						<td><?php echo $fecha; ?></td>
 						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_prov;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_prov;?>" ><?php echo $nombre_prov;?></a></td>
-						<td><?php echo $nombre_vendedor; ?></td>
-						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
+						<td class='text-center'><?php echo $nombre_vendedor; ?></td>
 						<td class='text-right'><?php echo number_format ($total_compra,2); ?></td>					
 					<td class="text-right">
 
@@ -117,11 +112,11 @@
 				}
 				?>
 				<tr>
-					<td colspan=5><span class="pull-right">
+					<td colspan=4><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
-					<td colspan=4></td>
+					<td colspan=5></td>
 				</tr>
 			  </table>
 			</div>

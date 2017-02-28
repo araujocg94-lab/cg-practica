@@ -50,7 +50,7 @@
 				 </div>
 						<div class="form-group row">
 							<label for="empresa" class="col-md-1 control-label">Vendedor</label>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<select class="form-control input-sm" id="id_vendedor" disabled="true">
 									<?php
 										$sql_vendedor=mysqli_query($con,"select * from users order by apellido");
@@ -74,17 +74,13 @@
 								<input type="text" class="form-control input-sm" id="fecha" value="<?php echo date("d/m/Y");?>" readonly>
 							</div>
 							<label for="email" class="col-md-1 control-label">Pago</label>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<select class='form-control input-sm' id="condiciones">
 									<option value="1">Efectivo</option>
 									<option value="2">Cheque</option>
 									<option value="3">Transferencia bancaria</option>
 									<option value="4">Crédito</option>
 								</select>
-							</div>
-							<label for="tipo" class="col-md-1 control-label">Tipo</label>
-							<div class="col-md-2">
-							<input type="text" class="form-control input-sm" id="tipo" placeholder="Tipo" readonly>
 							</div>
 
 						</div>
