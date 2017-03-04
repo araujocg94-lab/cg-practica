@@ -84,7 +84,6 @@
 					<th>Teléfono</th>
 					<th>Email</th>
 					<th>Dirección</th>
-					<th>Tipo</th>
 					<th>Agregado</th>
 					<th class='text-right'>Acciones</th>
 					
@@ -97,9 +96,6 @@
 						$telefono_cliente=$row['telefono_cliente'];
 						$email_cliente=$row['email_cliente'];
 						$direccion_cliente=$row['direccion_cliente'];
-						$tipo_cliente=$row['tipo_cliente'];
-						if ($tipo_cliente==1){$tipo="Normal";}
-						else {$tipo="Especial";}
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						
 					?>
@@ -109,7 +105,6 @@
 					<input type="hidden" value="<?php echo $telefono_cliente;?>" id="telefono_cliente<?php echo $id_cliente;?>">
 					<input type="hidden" value="<?php echo $email_cliente;?>" id="email_cliente<?php echo $id_cliente;?>">
 					<input type="hidden" value="<?php echo $direccion_cliente;?>" id="direccion_cliente<?php echo $id_cliente;?>">
-					<input type="hidden" value="<?php echo $tipo_cliente;?>" id="tipo_cliente<?php echo $id_cliente;?>">
 					
 					<tr>
 						
@@ -118,7 +113,6 @@
 						<td ><?php echo $telefono_cliente; ?></td>
 						<td><?php echo $email_cliente;?></td>
 						<td><?php echo $direccion_cliente;?></td>
-						<td><?php echo $tipo;?></td>
 						<td><?php echo $date_added;?></td>
 						
 					<td ><span class="pull-right">

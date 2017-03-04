@@ -23,13 +23,13 @@
 			   <div class="form-group">
 				<label for="mod_ci" class="col-sm-3 control-label">CI</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="mod_ci" name="mod_ci">
+				  <input type="text" class="form-control" id="mod_ci" name="mod_ci" required pattern="^([VEJPG]{1})([0-9]{6,9})$" title="La cédula de identidad o RIF debe tener el formato V12345678 o J123456789 sin guiones." maxlength="10">
 				</div>
 			  </div>
 			   <div class="form-group">
 				<label for="mod_telefono" class="col-sm-3 control-label">Teléfono</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="mod_telefono" name="mod_telefono">
+				  <input type="text" class="form-control" id="mod_telefono" name="mod_telefono" pattern="^([0-9]{7,11})$" title="El Numero de telefono debe contener solo caracteres numericos" maxlength="11">
 				</div>
 			  </div>
 			  
@@ -43,17 +43,6 @@
 				<label for="mod_direccion" class="col-sm-3 control-label">Dirección</label>
 				<div class="col-sm-8">
 				  <textarea class="form-control" id="mod_direccion" name="mod_direccion" ></textarea>
-				</div>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="mod_tipo" class="col-sm-3 control-label">Tipo</label>
-				<div class="col-sm-8">
-				 <select class="form-control" id="mod_tipo" name="mod_tipo" required>
-					<option value="">-- Selecciona tipo --</option>
-					<option value="1" selected>Normal</option>
-					<option value="0">Especial</option>
-				  </select>
 				</div>
 			  </div>
 			 

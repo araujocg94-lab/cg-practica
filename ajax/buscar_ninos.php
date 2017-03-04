@@ -8,7 +8,7 @@
 	if($action == 'ajax'){
 		// quitar html/javascript 
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array( 'nombre_producto');//Columnas de busqueda
 		 $sTable = "productos";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -29,13 +29,13 @@
 		$adjacents  = 4; //brecha entre paginas adyacentes
 		$offset = ($page - 1) * $per_page;
 		//Cuenta el número total de filas en la tabla
-		$count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
+		$count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable $sWhere");
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './ninos.php';
 		//consulta para odtener datos
-		$sql="SELECT * FROM  $sTable Where tipo_producto= '1' or tipo_producto='0' LIMIT $offset,$per_page";
+		$sql="SELECT * FROM  $sTable  $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 		//enlazar datos odtenidos
 		if ($numrows>0){

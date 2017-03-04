@@ -1,8 +1,14 @@
 <?php
 	/*Inicia validacion del lado del servidor*/
 	if (empty($_POST['nombre'])) {
-           $errors[] = "Nombre vacío";
-        } else if (!empty($_POST['nombre'])){
+           $errors[] = "Ingrese Nombre del cliente";
+  	 } else if (empty($_POST['ci'])){
+			$errors[] = "Ingrese cedula o Rif del cliente";
+        } else if (
+        	!empty($_POST['nombre']) &&
+			!empty($_POST['ci'])
+        	){
+
 		/* conectarse a la bd*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -12,14 +18,13 @@
 		$telefono=mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
 		$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
 		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
-		$tipo=intval($_POST['tipo']);
 		$date_added=date("Y-m-d H:i:s");
-		$sql="INSERT INTO clientes (nombre_cliente, ci_cliente, telefono_cliente, email_cliente, direccion_cliente, tipo_cliente, date_added) VALUES ('$nombre','$ci','$telefono','$email','$direccion','$tipo','$date_added')";
+		$sql="INSERT INTO clientes (nombre_cliente, ci_cliente, telefono_cliente, email_cliente, direccion_cliente, date_added) VALUES ('$nombre','$ci','$telefono','$email','$direccion','$date_added')";
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
 				$messages[] = "Cliente ha sido ingresado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento Cedula o RIF del cliente ya existe.";
 			}
 		} else {
 			$errors []= "Error desconocido.";

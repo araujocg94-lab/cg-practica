@@ -125,8 +125,8 @@
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script type="text/javascript" src="js/nueva_factura.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="./css/autocomplete.css">
+    <script src="./js/autocomplete.js"></script>
 	<script>
 		$(function() {
 						$("#ci_cliente").autocomplete({
@@ -138,8 +138,7 @@
 								$('#ci_cliente').val(ui.item.ci_cliente);
 								$('#nombre_cliente').val(ui.item.nombre_cliente);
 								$('#tel1').val(ui.item.telefono_cliente);
-								$('#mail').val(ui.item.email_cliente);
-								$('#tipo').val(ui.item.tipo_cliente);					
+								$('#mail').val(ui.item.email_cliente);				
 								
 							 }
 						});
@@ -154,7 +153,6 @@
 							$("#nombre_cliente" ).val("")
 							$("#tel1" ).val("");
 							$("#mail" ).val("");
-							$("#tipo" ).val("");
 											
 						}
 						if (event.keyCode==$.ui.keyCode.DELETE){
@@ -163,7 +161,6 @@
 							$("#nombre_cliente" ).val("")
 							$("#tel1" ).val("");
 							$("#mail" ).val("");
-							$("#tipo" ).val("");
 	
 						}
 			});	

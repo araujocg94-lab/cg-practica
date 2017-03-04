@@ -56,6 +56,7 @@ $( "#guardar_cliente" ).submit(function( event ) {
 			$("#resultados_ajax").html(datos);
 			$('#guardar_datos').attr("disabled", false);
 			load(1);
+			$("#guardar_cliente")[0].reset();
 		  }
 	});
   event.preventDefault();

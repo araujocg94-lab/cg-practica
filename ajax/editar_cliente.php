@@ -6,13 +6,10 @@
            $errors[] = "Nombre vacío";
         }  else if (empty($_POST['mod_ci'])) {
            $errors[] = "CI vacío";
-        } else if ($_POST['mod_tipo']==""){
-			$errors[] = "Selecciona el tipo del cliente";
-		}  else if (
+        }   else if (
 			!empty($_POST['mod_id']) &&
 			!empty($_POST['mod_nombre']) &&
-			!empty($_POST['mod_ci']) &&
-			$_POST['mod_tipo']!="" 
+			!empty($_POST['mod_ci']) 
 		){
 		/* conectarse a la bd*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -23,15 +20,14 @@
 		$telefono=mysqli_real_escape_string($con,(strip_tags($_POST["mod_telefono"],ENT_QUOTES)));
 		$email=mysqli_real_escape_string($con,(strip_tags($_POST["mod_email"],ENT_QUOTES)));
 		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_direccion"],ENT_QUOTES)));
-		$tipo=intval($_POST['mod_tipo']);
 		
 		$id_cliente=intval($_POST['mod_id']);
-		$sql="UPDATE clientes SET nombre_cliente='".$nombre."', ci_cliente='".$ci."', telefono_cliente='".$telefono."', email_cliente='".$email."', direccion_cliente='".$direccion."', tipo_cliente='".$tipo."' WHERE id_cliente='".$id_cliente."'";
+		$sql="UPDATE clientes SET nombre_cliente='".$nombre."', ci_cliente='".$ci."', telefono_cliente='".$telefono."', email_cliente='".$email."', direccion_cliente='".$direccion."' WHERE id_cliente='".$id_cliente."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Cliente ha sido actualizado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento Cedula o RIF del cliente ya existe";
 			}
 		} else {
 			$errors []= "Error desconocido.";
