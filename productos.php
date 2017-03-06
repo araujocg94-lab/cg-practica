@@ -62,7 +62,8 @@
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/productos.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+	<script type="text/javascript" src="js/formulario.js"></script>
+	<script type="text/javascript" src="js/bootstrap-filestyle.js"> </script>
   </body>
 </html>
 <script>
@@ -77,6 +78,7 @@ $(document).ready(function(){
 				$("#resultados_ajax_productos").html(datos);
 				$('#guardar_datos').attr("disabled", false);
 				load(1);
+				$("#guardar_producto")[0].reset();
 		  }
 	});
 });

@@ -13,11 +13,6 @@
 		  <div class="modal-body">
 			<form class="form-horizontal" action="ajax/editar_producto.php" method="post" enctype="multipart/form-data" id="editar_producto"  name="editar_producto">
 			<div id="resultados_ajax2"></div>
-				<div class="form-group">
-				<div class="col-sm-8" id="load_img">
-					<img class="img-responsive" src="imagefile" alt="Logo">
-				</div>
-				</div>
 			  <div class="form-group">
 				<label for="mod_codigo" class="col-sm-3 control-label">Código</label>
 				<div class="col-sm-8">
@@ -41,7 +36,7 @@
 				<div class="form-group">
 					<label for="mod_imagen" class="col-sm-3 control-label">Imagen</label>
 					<div class="col-sm-8">
-						<input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" required>
+						<input class='filestyle' data-buttonText="Imagen" type="file" name="imagefile" id="imagefile" required>
 					</div>
 				</div>
 

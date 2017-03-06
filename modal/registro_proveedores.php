@@ -22,13 +22,13 @@
 			   <div class="form-group">
 				<label for="ci" class="col-sm-3 control-label">CI o RIF</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="ci" name="ci" >
+				  <input type="text" class="form-control" id="ci" name="ci" required pattern="^([VEJPG]{1})([0-9]{8,9})$" title="La cédula de identidad o RIF debe tener el formato V12345678 o J123456789 sin guiones." maxlength="10">
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="telefono" class="col-sm-3 control-label">Teléfono</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="telefono" name="telefono" >
+				  <input type="text" class="form-control" id="telefono" name="telefono" pattern="^([0-9]{7,11})$" title="El Numero de telefono debe contener solo caracteres numericos" maxlength="11">
 				</div>
 			  </div>
 			  

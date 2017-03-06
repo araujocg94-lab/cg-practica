@@ -99,10 +99,10 @@
 						$imagen_producto=$row['imagen_producto'];
 						$cantidad_producto=$row['cantidad_producto'];
 						$tipo_producto=$row['tipo_producto'];
-						if ($tipo_producto==1){$text_tipo="niño";}
-						elseif ($tipo_producto==2){$text_tipo="caballero";} 
-						elseif ($tipo_producto==3){$text_tipo="dama";} 
-						elseif ($tipo_producto==0){$text_tipo="Unisex";} 
+						if ($tipo_producto==1){$text_tipo="niño";$label_class='label-warning';}
+						elseif ($tipo_producto==2){$text_tipo="caballero";$label_class='label-primary';}
+						elseif ($tipo_producto==3){$text_tipo="dama";$label_class='label-danger';}
+						elseif ($tipo_producto==0){$text_tipo="Unisex";$label_class='label-success';} 
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						$costo_producto=$row['costo_producto'];
 						$descuento_producto=$row['descuento_producto'];
@@ -126,16 +126,30 @@
 						<td><?php echo $codigo_producto; ?></td>
 						<td ><?php echo $nombre_producto; ?></td>
 						<td ><?php echo $cantidad_producto; ?></td>
-						<td><?php echo $text_tipo;?></td>
+						<td><span class="label <?php echo $label_class;?>"><?php echo $text_tipo;?></span></td>
 						<td><?php echo $date_added;?></td>
 						<td><span class='pull-right'><?php echo number_format($costo_producto,2);?>Bs.</span></td>
 						<td><span class='pull-right'><?php echo number_format($precio_producto,2);?>Bs.</span></td>
 						<td><span class='pull-right'><?php echo number_format($descuento_producto,2);?>Bs.</span></td>
 					<td ><span class="pull-right">
 
+					<?php
+
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR user_tipo = 2 ");
+                    	while ($rw=mysqli_fetch_array($sql_user)){
+                      	$id_user=$rw["user_id"];
+                      	if ($id_user==$_SESSION['user_id']){
+                    ?>
+
 					<a href="#" class='btn btn-success' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 
-					<a href="#" class='btn btn-danger' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<a href="#" class='btn btn-danger' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span>
+					  <?php
+                      } 
+                    }
+                  ?>
+
+					</td>
 						
 					</tr>
 					<?php

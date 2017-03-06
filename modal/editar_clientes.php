@@ -42,7 +42,7 @@
 			  <div class="form-group">
 				<label for="mod_direccion" class="col-sm-3 control-label">Dirección</label>
 				<div class="col-sm-8">
-				  <textarea class="form-control" id="mod_direccion" name="mod_direccion" ></textarea>
+				  <textarea class="form-control" id="mod_direccion" name="mod_direccion" maxlength="255" ></textarea>
 				</div>
 			  </div>
 			 

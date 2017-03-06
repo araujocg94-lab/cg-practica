@@ -10,7 +10,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
         } elseif (empty($_POST['user_password_new']) || empty($_POST['user_password_repeat'])) {
             $errors[] = "Contraseña vacía";
         } elseif ($_POST['user_password_new'] !== $_POST['user_password_repeat']) {
-            $errors[] = "la contraseña y la repetición de la contraseña no son lo mismo";
+            $errors[] = "Las contraseñas no son lo iguales";
         } elseif (strlen($_POST['user_password_new']) < 6) {
             $errors[] = "La contraseña debe tener como mínimo 6 caracteres";
         } elseif (strlen($_POST['user_name']) > 30 || strlen($_POST['user_name']) < 2) {
@@ -23,6 +23,8 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
             $errors[] = "El correo electrónico no puede ser superior a 64 caracteres";
         } elseif (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Su dirección de correo electrónico no está en un formato de correo electrónico válida";
+        } else if ($_POST['user_tipo']==""){
+            $errors[] = "Selecciona el tipo del usuario";
         } elseif (
 			!empty($_POST['user_name'])
 			&& !empty($_POST['nombre'])
@@ -36,6 +38,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
             && !empty($_POST['user_password_new'])
             && !empty($_POST['user_password_repeat'])
             && ($_POST['user_password_new'] === $_POST['user_password_repeat'])
+            && $_POST['user_tipo']!=""
         ) {
             require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 			require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos

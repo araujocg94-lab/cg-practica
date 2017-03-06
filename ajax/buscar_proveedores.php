@@ -112,16 +112,17 @@
 						<td><?php echo $email_prov;?></td>
 						<td><?php echo $direccion_prov;?></td>
 						<td><?php echo $date_added;?></td>
-						
-					<td ><span class="pull-right">
-					<a href="#" class='btn btn-success' title='Editar proveedor' onclick="obtener_datos('<?php echo $id_prov;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-					<?php
 
-                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
+						<?php
+
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR user_tipo = 2 ");
                     	while ($rw=mysqli_fetch_array($sql_user)){
                       	$id_user=$rw["user_id"];
                       	if ($id_user==$_SESSION['user_id']){
                         ?>
+					<td ><span class="pull-right">
+					<a href="#" class='btn btn-success' title='Editar proveedor' onclick="obtener_datos('<?php echo $id_prov;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
+
 					<a href="#" class='btn btn-danger' title='Borrar proveedor' onclick="eliminar('<?php echo $id_prov; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span>
 					<?php
                       } 

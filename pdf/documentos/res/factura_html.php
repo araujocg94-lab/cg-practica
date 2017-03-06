@@ -75,25 +75,25 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 	
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:50%;" class='midnight-green'>FACTURAR A</td>
+           <td style="width:20%;" class='midnight-green'>FACTURADO A</td>
+           <td style="width:20%;" class='midnight-green'>CI o RIF</td>
+           <td style="width:20%;" class='midnight-green'>DIRECCION</td>
+           <td style="width:20%;" class='midnight-green'>TELEFONO</td>
+           <td style="width:20%;" class='midnight-green'>E-MAIL</td>
         </tr>
 		<tr>
-           <td style="width:50%;" >
+           <td style="width:20%;" >
 			<?php 
 				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
 				$rw_cliente=mysqli_fetch_array($sql_cliente);
 				echo $rw_cliente['nombre_cliente'];
-				echo "<br> CI: ";
-				echo $rw_cliente['ci_cliente'];
-				echo "<br>";
-				echo $rw_cliente['direccion_cliente'];
-				echo "<br> Teléfono: ";
-				echo $rw_cliente['telefono_cliente'];
-				echo "<br> Email: ";
-				echo $rw_cliente['email_cliente'];
 			?>
 			
 		   </td>
+		   	<td style="width:20%;"><?php echo $rw_cliente['ci_cliente'];?></td>
+		    <td style="width:20%;"><?php echo $rw_cliente['direccion_cliente'];?></td>
+		    <td style="width:20%;"><?php echo $rw_cliente['telefono_cliente'];?></td>
+		    <td style="width:20%;"><?php echo $rw_cliente['email_cliente'];?></td>
         </tr>
         
    
@@ -133,7 +133,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
-            <th style="width: 45%" class='midnight-green'>DESCRIPCION</th>
+            <th style="width: 45%" class='midnight-green'>PRODUCTO</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO UNIT.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>DESCUENTO.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
@@ -143,6 +143,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 <?php
 $nums=1;
 $sumador_total=0;
+$sumador_descuento=0;
 $sql=mysqli_query($con, "select * from productos, tmp where productos.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
 while ($row=mysqli_fetch_array($sql))
 	{
@@ -163,6 +164,7 @@ while ($row=mysqli_fetch_array($sql))
 	$descuento=$row['descuento_tmp'];	
 	$descuento_f=number_format($descuento,2);//Formateo variables
 	$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas
+	$sumador_descuento+=$descuento_r;//Sumador
 
 	$precio_venta=$row['precio_tmp'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
@@ -194,22 +196,27 @@ while ($row=mysqli_fetch_array($sql))
 	
 	$nums++;
 	}
+	$subdescuento=number_format($sumador_descuento,2,'.','');
 	$subtotal=number_format($sumador_total,2,'.','');
 	$total_iva=($subtotal * TAX )/100;
 	$total_iva=number_format($total_iva,2,'.','');
 	$total_factura=$subtotal+$total_iva;
 ?>
-	  
+
+	 	 <tr>
+			<td colspan="4" style="widtd: 85%; text-align: right;">DESCUENTO: </td>
+			<td style="widtd: 15%; text-align: right;"><?php echo number_format($subdescuento,2);?>Bs.</td>
+		</tr>
         <tr>
-            <td colspan="4" style="widtd: 85%; text-align: right;">SUBTOTAL &#36; </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">SUBTOTAL: </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?>Bs.</td>
         </tr>
 		<tr>
-            <td colspan="4" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% &#36; </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% :</td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?>Bs.</td>
         </tr><tr>
-            <td colspan="4" style="widtd: 85%; text-align: right;">TOTAL &#36; </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">TOTAL: </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?>Bs.</td>
         </tr>
     </table>
 	
@@ -225,6 +232,6 @@ while ($row=mysqli_fetch_array($sql))
 
 <?php
 $date=date("Y-m-d H:i:s");
-$insert=mysqli_query($con,"INSERT INTO facturas VALUES ('','$numero_factura','$date','$id_cliente','$id_vendedor','$condiciones','$total_factura','1')");
+$insert=mysqli_query($con,"INSERT INTO facturas VALUES ('','$numero_factura','$date','$id_cliente','$id_vendedor','$condiciones','$total_factura')");
 $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
 ?>

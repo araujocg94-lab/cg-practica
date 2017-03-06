@@ -86,7 +86,7 @@
 			if ($query_update){
 				$messages[] = "Producto ha sido actualizado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Codigo del producto ya existe";
 			}
 		} else {
 			$errors []= "Error desconocido.";

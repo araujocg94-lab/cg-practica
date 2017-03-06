@@ -75,25 +75,25 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 	
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:50%;" class='midnight-green'>COMPRADO A</td>
+           <td style="width:20%;" class='midnight-green'>COMPRADO A</td>
+           <td style="width:20%;" class='midnight-green'>CI o RIF</td>
+           <td style="width:20%;" class='midnight-green'>DIRECCION</td>
+           <td style="width:20%;" class='midnight-green'>TELEFONO</td>
+           <td style="width:20%;" class='midnight-green'>E-MAIL</td>
         </tr>
-		<tr>                
-           <td style="width:50%;" >
+		<tr>
+           <td style="width:20%;" >
 			<?php 
 				$sql_prov=mysqli_query($con,"select * from proveedor where id_prov='$id_prov'");
 				$rw_prov=mysqli_fetch_array($sql_prov);
 				echo $rw_prov['nombre_prov'];
-				echo "<br> CI: ";
-				echo $rw_prov['ci_prov'];
-				echo "<br>";
-				echo $rw_prov['direccion_prov'];
-				echo "<br> Teléfono: ";
-				echo $rw_prov['telefono_prov'];
-				echo "<br> Email: ";
-				echo $rw_prov['email_prov'];
 			?>
 			
 		   </td>
+		   	<td style="width:20%;"><?php echo $rw_prov['ci_prov'];?></td>
+		    <td style="width:20%;"><?php echo $rw_prov['direccion_prov'];?></td>
+		    <td style="width:20%;"><?php echo $rw_prov['telefono_prov'];?></td>
+		    <td style="width:20%;"><?php echo $rw_prov['email_prov'];?></td>
         </tr>
         
    
@@ -133,7 +133,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
-            <th style="width: 60%" class='midnight-green'>DESCRIPCION</th>
+            <th style="width: 60%" class='midnight-green'>PRODUCTO</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO UNIT.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
             
@@ -217,6 +217,6 @@ while ($row=mysqli_fetch_array($sql))
 <?php
 $date=date("Y-m-d H:i:s");
 
-$insert=mysqli_query($con,"INSERT INTO compras VALUES ('','$numero_compra','$date','$id_prov','$id_vendedor','$condiciones','$total_compra','1')");
+$insert=mysqli_query($con,"INSERT INTO compras VALUES ('','$numero_compra','$date','$id_prov','$id_vendedor','$condiciones','$total_compra')");
 $delete=mysqli_query($con,"DELETE FROM tmp_compra WHERE session_id='".$session_id."'");
 ?>

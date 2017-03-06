@@ -13,7 +13,7 @@
 				success:function(data){
 					$(".outer_div").html(data).fadeIn('slow');
 					$('#loader').html('');
-					
+					$("#guardar_usuario")[0].reset();
 				}
 			})
 		}

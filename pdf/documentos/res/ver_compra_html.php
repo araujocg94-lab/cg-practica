@@ -62,7 +62,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
            <td style="width:20%;" class='midnight-green'>COMPRADO A</td>
-           <td style="width:20%;" class='midnight-green'>CI</td>
+           <td style="width:20%;" class='midnight-green'>CI o RIF</td>
            <td style="width:20%;" class='midnight-green'>DIRECCION</td>
            <td style="width:20%;" class='midnight-green'>TELEFONO</td>
            <td style="width:20%;" class='midnight-green'>E-MAIL</td>
@@ -119,7 +119,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
-            <th style="width: 60%" class='midnight-green'>DESCRIPCION</th>
+            <th style="width: 60%" class='midnight-green'>PRODUCTO</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>COSTO UNIT.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>COSTO TOTAL</th>
             

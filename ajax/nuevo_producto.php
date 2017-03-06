@@ -74,7 +74,7 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Codigo del producto ya existe";
 			}
 		} else {
 			$errors []= "Error desconocido.";

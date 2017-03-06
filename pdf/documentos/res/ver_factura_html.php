@@ -74,9 +74,9 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
            <td style="width:20%;" class='midnight-green'>FACTURADO A</td>
-           <td style="width:10%;" class='midnight-green'>CI</td>
+           <td style="width:20%;" class='midnight-green'>CI o RIF</td>
            <td style="width:20%;" class='midnight-green'>DIRECCION</td>
-           <td style="width:10%;" class='midnight-green'>TELEFONO</td>
+           <td style="width:20%;" class='midnight-green'>TELEFONO</td>
            <td style="width:20%;" class='midnight-green'>E-MAIL</td>
         </tr>
 		<tr>
@@ -91,7 +91,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 		   	<td style="width:20%;"><?php echo $rw_cliente['ci_cliente'];?></td>
 		    <td style="width:20%;"><?php echo $rw_cliente['direccion_cliente'];?></td>
 		    <td style="width:20%;"><?php echo $rw_cliente['telefono_cliente'];?></td>
-		    <td style="width:30%;"><?php echo $rw_cliente['email_cliente'];?></td>
+		    <td style="width:20%;"><?php echo $rw_cliente['email_cliente'];?></td>
         </tr>
         
    
@@ -131,16 +131,17 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
         <tr>
             <th style="width: 10%;text-align:center" class='midnight-green'>CANT.</th>
-            <th style="width: 45%" class='midnight-green'>DESCRIPCION</th>
+            <th style="width: 40%" class='midnight-green'>PRODUCTO</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO UNIT.</th>
             <th style="width: 15%;text-align: right" class='midnight-green'>DESCUENTO.</th>
-            <th style="width: 15%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
+            <th style="width: 20%;text-align: right" class='midnight-green'>PRECIO TOTAL</th>
             
         </tr>
 
 <?php
 $nums=1;
 $sumador_total=0;
+$sumador_descuento=0;
 $sql=mysqli_query($con, "select * from productos, detalle_factura, facturas where productos.id_producto=detalle_factura.id_producto and detalle_factura.numero_factura=facturas.numero_factura and facturas.id_factura='".$id_factura."'");
 
 while ($row=mysqli_fetch_array($sql))
@@ -153,7 +154,8 @@ while ($row=mysqli_fetch_array($sql))
 	$descuento=$row['descuento_venta'];	
 	$descuento_f=number_format($descuento,2);//Formateo variables
 	$descuento_r=str_replace(",","",$descuento_f);//Reemplazo las comas
-	
+	$sumador_descuento+=$descuento_r;//Sumador
+
 	$precio_venta=$row['precio_venta'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
@@ -171,10 +173,10 @@ while ($row=mysqli_fetch_array($sql))
 
         <tr>
             <td class='<?php echo $clase;?>' style="width: 10%; text-align: center"><?php echo $cantidad; ?></td>
-            <td class='<?php echo $clase;?>' style="width: 45%; text-align: left"><?php echo $nombre_producto;?></td>
+            <td class='<?php echo $clase;?>' style="width: 40%; text-align: left"><?php echo $nombre_producto;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_venta_f;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $descuento_f;?></td>
-            <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_total_f;?></td>
+            <td class='<?php echo $clase;?>' style="width: 20%; text-align: right"><?php echo $precio_total_f;?></td>
             
         </tr>
 
@@ -183,22 +185,28 @@ while ($row=mysqli_fetch_array($sql))
 	
 	$nums++;
 	}
+	$subdescuento=number_format($sumador_descuento,2,'.','');
 	$subtotal=number_format($sumador_total,2,'.','');
 	$total_iva=($subtotal * TAX )/100;
 	$total_iva=number_format($total_iva,2,'.','');
 	$total_factura=$subtotal+$total_iva;
 ?>
-	  
+
+
+	 	 <tr>
+			<td colspan="4" style="widtd: 85%; text-align: right;">DESCUENTO: </td>
+			<td style="widtd: 15%; text-align: right;"><?php echo number_format($subdescuento,2);?>Bs.</td>
+		</tr>
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL Bs. </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">SUBTOTAL: </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?>Bs.</td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)%; </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">IVA (<?php echo TAX; ?>)% :</td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?>Bs.</td>
         </tr><tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL Bs. </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
+            <td colspan="4" style="widtd: 85%; text-align: right;">TOTAL: </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?>Bs.</td>
         </tr>
     </table>
 	

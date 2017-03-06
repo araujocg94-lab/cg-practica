@@ -33,9 +33,9 @@
 				</div>
 			  </div>
 			   <div class="form-group">
-				<label for="imagen" class="col-sm-3 control-label">Imagen</label>
+				<label for="imagen" class="col-sm-3 control-label" >Imagen</label>
 				<div class="col-sm-8">
-				  <input type="file"  id="imagen" name="imagen">
+				  <input class='filestyle' data-buttonText="Imagen" type="file"  id="imagen" name="imagen" required>
 				</div>
 			  </div>
 			 <div class="form-group">

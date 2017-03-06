@@ -12,7 +12,7 @@
     </div>
 
 
-            <?php
+<?php
 require_once("libraries/password_compatibility_library.php");
 
 require_once("config/db.php");
@@ -41,7 +41,7 @@ if ($login->isUserLoggedIn() == true) {
 
       <ul class="nav navbar-nav">
       <?php
-                    $sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR 2");
+                    $sql_user=mysqli_query($con,"select * from users where user_tipo = 1 or user_tipo = 2");
                     while ($rw=mysqli_fetch_array($sql_user)){
                       $id_user=$rw["user_id"];
                       if ($id_user==$_SESSION['user_id']){
@@ -55,7 +55,8 @@ if ($login->isUserLoggedIn() == true) {
     
         <li class="<?php echo $active_productos;?>"><a href="productos.php"><i class='glyphicon glyphicon-barcode'></i> Productos</a></li>
 		    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-star-empty'></i> Clientes</a></li>
-         <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-star'></i> Proveedores</a></li>               <?php
+        <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-star'></i>Proveedores</a></li>               
+                  <?php
                     $sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
                     while ($rw=mysqli_fetch_array($sql_user)){
                       $id_user=$rw["user_id"];
@@ -86,7 +87,6 @@ if ($login->isUserLoggedIn() == true) {
      <li class="<?php echo $active_ofertas;?>"><a href="ofertas.php"><i class='glyphicon glyphicon-barcode'></i> Ofertas</a></li>
      </ul>
 
-
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class='glyphicon glyphicon-user'></i> Ingresar<span class="caret"></span></a>
@@ -110,7 +110,6 @@ if ($login->isUserLoggedIn() == true) {
           }
         }
         ?>
-                <span id="reauth-email" class="reauth-email"></span>
                 <div class="from-group">
                 <input class="form-control" placeholder="Usuario" name="user_name" type="text" value="" autofocus="" required>
                 </div>

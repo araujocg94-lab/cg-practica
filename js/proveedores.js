@@ -54,6 +54,7 @@ $( "#guardar_prov" ).submit(function( event ) {
 			$("#resultados_ajax").html(datos);
 			$('#guardar_datos').attr("disabled", false);
 			load(1);
+			$("#guardar_prov")[0].reset();
 		  }
 	});
   event.preventDefault();

@@ -1,15 +1,14 @@
 <?php
-
+	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/* conectarse a la bd*/-
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
 		$user_id=intval($_GET['id']);
-		$query=mysqli_query($con, "select * from users where user_id='".$user_id."'");
-		$rw_user=mysqli_fetch_array($query);
-		$count=$rw_user['user_id'];
+		$query=mysqli_query($con, "select * from facturas, compras where facturas.id_vendedor='".$user_id."' or compras.id_vendedor='".$user_id."'");
+		$count=mysqli_num_rows($query);
 		if ($count==0){
 			if ($delete1=mysqli_query($con,"DELETE FROM users WHERE user_id='".$user_id."'")){
 			?>
@@ -32,7 +31,7 @@
 			?>
 			<div class="alert alert-danger alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <strong>Error!</strong> No se puede borrar el usuario administrador. 
+			  <strong>Error!</strong> No se puede borrar, el usuario tiene asociados facuras y/o compras. 
 			</div>
 			<?php
 		}
@@ -77,7 +76,6 @@
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="success">
-					<th>ID</th>
 					<th>Nombres</th>
 					<th>Usuario</th>
 					<th>Email</th>
@@ -108,7 +106,6 @@
 					<input type="hidden" value="<?php echo $user_tipo;?>" id="tipo<?php echo $user_id;?>">
 				
 					<tr>
-						<td><?php echo $user_id; ?></td>
 						<td><?php echo $fullname; ?></td>
 						<td ><?php echo $user_name; ?></td>
 						<td ><?php echo $user_email; ?></td>
@@ -126,7 +123,7 @@
                         ?>
 					<a href="#" class='btn btn-success' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 					<a href="#" class='btn btn-warning' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><i class="glyphicon glyphicon-cog"></i></a>
-					<a href="#" class='btn btn-danger' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>              
+					<a href="#" class='btn btn-danger' title='Borrar usuario' onclick="eliminar('<?php echo $user_id;?>')"><i class="glyphicon glyphicon-trash"></i> </a>              
                    <?php
                       } 
                     }

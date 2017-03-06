@@ -14,8 +14,16 @@
 		$sql_pro="SELECT cantidad_producto FROM productos WHERE id_producto = '$id' ";
 		$consult_tmp=mysqli_query($con, $sql_pro);
 		while ($row=mysqli_fetch_array($consult_tmp)) {
-			$compara = $row[0];
+			$compara1 = $row[0];
 		}
+		$compara2=0;
+		$sql_pro="SELECT cantidad_tmp FROM tmp WHERE id_producto = '$id' ";
+		$consult_tmp=mysqli_query($con, $sql_pro);
+		while ($row=mysqli_fetch_array($consult_tmp)) {
+			$compara2 += $row[0];
+		}
+		$compara = $compara1 - $compara2;
+
 		if ($cantidad > $compara) {
 			?>
 			<script>alert('Cantidad exede la existencia disponible');</script>
@@ -92,13 +100,13 @@
 
 	?>
 	<tr>
-		<td class='text-right' colspan=5>SUBTOTAL </td>
-		<td class='text-right'><?php echo number_format($subtotal,2);?>Bs.</td>
+		<td class='text-right' colspan=5>DESCUENTO </td>
+		<td class='text-right'><?php echo number_format($subdescuento,2);?>Bs.</td>
 		<td></td>
 	</tr>
 	<tr>
-		<td class='text-right' colspan=5>DESCUENTO </td>
-		<td class='text-right'><?php echo number_format($subdescuento,2);?>Bs.</td>
+		<td class='text-right' colspan=5>SUBTOTAL </td>
+		<td class='text-right'><?php echo number_format($subtotal,2);?>Bs.</td>
 		<td></td>
 	</tr>
 	<tr>

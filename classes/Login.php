@@ -113,8 +113,13 @@ else
     public function doLogout()
     {
         // delete the session of the user
+        $con=@mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         $_SESSION = array();
+        $session_id= session_id();
+        $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
+        $delete=mysqli_query($con,"DELETE FROM tmp_compra WHERE session_id='".$session_id."'");
         session_destroy();
+
         // return a little feeedback message
         $this->messages[] = "";
 

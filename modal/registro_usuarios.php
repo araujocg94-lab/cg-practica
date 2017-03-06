@@ -28,7 +28,7 @@
 			  <div class="form-group">
 				<label for="user_name" class="col-sm-3 control-label">Usuario</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Usuario" pattern="[a-zA-Z0-9]{2,64}" title="Nombre de usuario ( sólo letras y números, 2-64 caracteres)"required>
+				  <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Usuario" pattern="[a-zA-Z0-9]{2,64}" title="Nombre de usuario ( sólo letras y números, 2-64 caracteres)" required>
 				</div>
 			  </div>
 			  <div class="form-group">
@@ -44,7 +44,7 @@
 					<option value="">-- Selecciona tipo --</option>
 					<option value="0" selected>Empleado</option>
 					<option value="1">Admin</option>
-					<option value="2">Cliente</option>
+					<option value="2">Vendedor</option>
 				  </select>
 				</div>
 			  </div>

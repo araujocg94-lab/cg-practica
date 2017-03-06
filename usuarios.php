@@ -81,6 +81,8 @@ $( "#guardar_usuario" ).submit(function( event ) {
 			$("#resultados_ajax").html(datos);
 			$('#guardar_datos').attr("disabled", false);
 			load(1);
+			$("#guardar_usuario")[0].reset();
+
 		  }
 	});
   event.preventDefault();
@@ -121,6 +123,7 @@ $( "#editar_password" ).submit(function( event ) {
 			$("#resultados_ajax3").html(datos);
 			$('#actualizar_datos3').attr("disabled", false);
 			load(1);
+			$("#editar_password")[0].reset();
 		  }
 	});
   event.preventDefault();
