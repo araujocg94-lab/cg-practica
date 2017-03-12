@@ -119,7 +119,7 @@
 					<input type="hidden" value="<?php echo number_format($precio_producto,2,'.','');?>" id="precio_producto<?php echo $id_producto;?>">
 					<input type="hidden" value="<?php echo $tipo_producto;?>" id="tipo_producto<?php echo $id_producto;?>">
 					<tr>
-						<td><a href="<?php echo $imagen_producto; ?>" target="_blank" ">
+						<td><a href="<?php echo $imagen_producto; ?>" target="_blank">
 								<img src="<?php echo $imagen_producto; ?>" style="height:50px; width:50px;">
 							</a>
 						</td>
@@ -133,15 +133,16 @@
 						<td><span class='pull-right'><?php echo number_format($descuento_producto,2);?>Bs.</span></td>
 					<td ><span class="pull-right">
 
+
+					<a href="#" class='btn btn-success' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
+
 					<?php
 
-                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR user_tipo = 2 ");
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 ");
                     	while ($rw=mysqli_fetch_array($sql_user)){
                       	$id_user=$rw["user_id"];
                       	if ($id_user==$_SESSION['user_id']){
                     ?>
-
-					<a href="#" class='btn btn-success' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
 
 					<a href="#" class='btn btn-danger' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span>
 					  <?php
@@ -156,7 +157,7 @@
 				}
 				?>
 				<tr>
-					<td colspan=7><span class="pull-right">
+					<td colspan=6><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>

@@ -26,8 +26,6 @@ function printCSS(){
     document.write('</style>');
 }
 
-
-
 function generateText(text){
     for(var i=0;i<text.length;i++){
         var rnd=Math.floor(Math.random()*colors.length);
@@ -37,8 +35,6 @@ function generateText(text){
         document.write('</span>');
     }
 }
-
-
 
 function changeColor(el){
     el=document.getElementById(el);

@@ -41,7 +41,7 @@
 	if($action == 'ajax'){
 		// quitar (html/javascript)
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('nombre_prov');//Columnas de busqueda
+		 $aColumns = array('nombre_prov', 'ci_prov');//Columnas de busqueda
 		 $sTable = "proveedor";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -115,7 +115,7 @@
 
 						<?php
 
-                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR user_tipo = 2 ");
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1");
                     	while ($rw=mysqli_fetch_array($sql_user)){
                       	$id_user=$rw["user_id"];
                       	if ($id_user==$_SESSION['user_id']){

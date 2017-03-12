@@ -91,9 +91,8 @@
 						$user_name=$row['user_name'];
 						$user_email=$row['user_email'];
 						$user_tipo=$row['user_tipo'];
-						if ($user_tipo==0){$text_tipo="Empleado";$label_class='label-success';}
-						elseif ($user_tipo==1) {$text_tipo="Admin";$label_class='label-danger';}
-						elseif ($user_tipo==2) {$text_tipo="Vendedor";$label_class='label-warning';}	
+						if ($user_tipo==1) {$text_tipo="Admin";$label_class='label-danger';}
+						else {$text_tipo="Empleado";$label_class='label-success';}	
 						$user_tipo=$row['user_tipo'];
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						

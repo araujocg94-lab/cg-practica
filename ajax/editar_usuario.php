@@ -31,7 +31,7 @@
             require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 			require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 			
-				// qitar html/javascript 
+				// quitar html/javascript 
                 $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre2"],ENT_QUOTES)));
 				$apellido = mysqli_real_escape_string($con,(strip_tags($_POST["apellido2"],ENT_QUOTES)));
 				$user_name = mysqli_real_escape_string($con,(strip_tags($_POST["user_name2"],ENT_QUOTES)));
@@ -39,17 +39,19 @@
 				$user_tipo=intval($_POST['user_tipo2']);
 				$user_id=intval($_POST['mod_id']);
 					
-               
-					// write new user's data into database
-                    $sql = "UPDATE users SET nombre='".$nombre."', apellido='".$apellido."', user_name='".$user_name."', user_email='".$user_email."', user_tipo='".$user_tipo."'
-                            WHERE user_id='".$user_id."';";
+                    $sql = "UPDATE users SET
+                     nombre='".$nombre."', 
+                     apellido='".$apellido."', 
+                     user_name='".$user_name."', 
+                     user_email='".$user_email."', 
+                     user_tipo='".$user_tipo."'
+                     WHERE user_id='".$user_id."';";
                     $query_update = mysqli_query($con,$sql);
 
-                    // if user has been added successfully
                     if ($query_update) {
                         $messages[] = "La cuenta ha sido modificada con éxito.";
                     } else {
-                        $errors[] = "Lo sentimos , el registro falló. Por favor, regrese y vuelva a intentarlo.";
+                        $errors[] = "Lo sentimos , el nombre de usuario ó la dirección de correo electrónico ya está en uso.";
                     }
                 
             

@@ -8,12 +8,12 @@
 	if($action == 'ajax'){
 		// quitar html/javascript 
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array('nombre_producto');//Columnas de busqueda
 		 $sTable = "productos";
-		 $sWhere = "";
+		 $sWhere = "WHERE tipo_producto= '3' OR tipo_producto='0'";
 		if ( $_GET['q'] != "" )
 		{
-			$sWhere = "WHERE (";
+			$sWhere = "WHERE (tipo_producto= '3' OR tipo_producto='0') AND (";
 			for ( $i=0 ; $i<count($aColumns) ; $i++ )
 			{
 				$sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
@@ -35,7 +35,7 @@
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './damas.php';
 		//consulta para odtener datos
-		$sql="SELECT * FROM  $sTable Where tipo_producto= '3' or tipo_producto='0' LIMIT $offset,$per_page";
+		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 		//enlazar datos odtenidos
 		if ($numrows>0){
@@ -63,7 +63,7 @@
 
 					
   					  <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
+                        <div class="thumbnail"> 
                             <img src="<?php echo $imagen_producto; ?>" class="img-thumbnail">
                             <hr>
                             <div class="caption">

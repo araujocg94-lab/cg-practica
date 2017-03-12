@@ -34,7 +34,6 @@
 		}
 	}
 
-	// echo $sql_tmp;
 
 	if (isset($_GET['id']))//codigo elimina un elemento del array
 	{

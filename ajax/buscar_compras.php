@@ -116,7 +116,7 @@
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>
-					<td colspan=5></td>
+					<td colspan=4></td>
 				</tr>
 			  </table>
 			</div>

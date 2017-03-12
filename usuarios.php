@@ -81,7 +81,6 @@ $( "#guardar_usuario" ).submit(function( event ) {
 			$("#resultados_ajax").html(datos);
 			$('#guardar_datos').attr("disabled", false);
 			load(1);
-			$("#guardar_usuario")[0].reset();
 
 		  }
 	});

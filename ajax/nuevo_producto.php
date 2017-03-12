@@ -29,7 +29,6 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				$extension= explode(".",basename($_FILES["imagen"]["name"]));
 				$image_name = $_POST['codigo'].".".$extension[1];
 
-				// $codigo
 				$target_file = $target_dir . $image_name;
 
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -38,11 +37,10 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				$logo_update="";	
 				
 				/* Inicio Validacion*/
-				// Allow certain file formats
 				if(($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
 				$errors[]= "<p>Lo sentimos, sólo se permiten archivos JPG , JPEG, PNG y GIF.</p>";
-				} else if ($imageFileZise > 4194304) {//1048576 byte=1MB
-				$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 1MB</p>";
+				} else if ($imageFileZise > 4194304) {
+				$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 4MB</p>";
 				}  else {
 				/* Fin Validacion*/
 				if ($imageFileZise>0){
@@ -67,14 +65,29 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		$descuento_venta=floatval($_POST['descuento']);
 		$precio_venta=floatval($_POST['precio']);
 		$date_added=date("Y-m-d H:i:s");
+		// checar si el codigo existe
+        $sql = "SELECT * FROM productos WHERE codigo_producto = '" . $codigo . "';";
+           $query_check_cod = mysqli_query($con,$sql);
+		   $query_check=mysqli_num_rows($query_check_cod);
+         if ($query_check == 1) {
+         	   $errors[] = "Codigo del producto ya existe.";
+                } else {
+		if ($costo_compra > $precio_venta) {
+			$errors []= "El costo no puede ser mayor al precio del producto ";
+		} else {
 
 		$sql="INSERT INTO productos (codigo_producto, nombre_producto, descripcion_producto, imagen_producto, cantidad_producto, tipo_producto, date_added, costo_producto, descuento_producto, precio_producto) VALUES ('$codigo','$nombre', '$descripcion', '$logo_update','$cantidad','$tipo','$date_added','$costo_compra', '$descuento_venta','$precio_venta')";
 		$query_new_insert = mysqli_query($con,$sql);
-
+		
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
+				?>
+			<script> $("#guardar_producto")[0].reset();</script>
+				<?php
 			} else{
-				$errors []= "Codigo del producto ya existe";
+				$errors []= "Lo sentimos , el registro falló. Por favor, regrese y vuelva a intentarlo.";
+			}
+			}
 			}
 		} else {
 			$errors []= "Error desconocido.";

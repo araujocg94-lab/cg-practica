@@ -69,10 +69,10 @@
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './clientes.php';
-		//main query to fetch the data
+
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
-		//loop through fetched data
+	
 		if ($numrows>0){
 			
 			?>
@@ -119,7 +119,7 @@
 
 					<?php
 
-                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 OR user_tipo = 2 ");
+                    	$sql_user=mysqli_query($con,"select * from users where user_tipo = 1 ");
                     	while ($rw=mysqli_fetch_array($sql_user)){
                       	$id_user=$rw["user_id"];
                       	if ($id_user==$_SESSION['user_id']){
@@ -137,7 +137,7 @@
 				}
 				?>
 				<tr>
-					<td colspan=5><span class="pull-right">
+					<td colspan=4><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>

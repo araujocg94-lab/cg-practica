@@ -8,12 +8,12 @@
 	if($action == 'ajax'){
 		// quitar html/javascript 
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array( 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array( "nombre_producto");//Columnas de busqueda
 		 $sTable = "productos";
-		 $sWhere = "";
+		 $sWhere = "WHERE tipo_producto = '1'";
 		if ( $_GET['q'] != "" )
 		{
-			$sWhere = "WHERE (";
+			$sWhere = "WHERE tipo_producto = '1' AND (";
 			for ( $i=0 ; $i<count($aColumns) ; $i++ )
 			{
 				$sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
@@ -21,7 +21,7 @@
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 		}
-		$sWhere.=" order by id_producto desc";
+		$sWhere.=" order by nombre_producto";
 		include 'pagination.php'; 
 		//Variables de paginacion
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -59,8 +59,8 @@
 						$descuento_producto=$row['descuento_producto'];
 						$precio_producto=$row['precio_producto'];
 						$total=$precio_producto-$descuento_producto;
+
 					?>
-					
   					<div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="<?php echo $imagen_producto; ?>" class="img-thumbnail">
@@ -79,16 +79,17 @@
                             </div>
                         </div>
                     </div>
-					<?php
+                <?php
 				}
 				?>
-			</div>
+				</div>
 			<div class="col-md-4 col-md-offset-5"">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?>
 				</div>
-			<?php
+          
+					<?php
 		}
 	}
 ?>

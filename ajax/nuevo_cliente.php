@@ -19,12 +19,23 @@
 		$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
 		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
 		$date_added=date("Y-m-d H:i:s");
+		// checar si el codigo existe
+		 $sql = "SELECT * FROM clientes WHERE ci_cliente = '" . $ci . "';";
+           $query_check_ci = mysqli_query($con,$sql);
+		   $query_check=mysqli_num_rows($query_check_ci);
+         if ($query_check == 1) {
+         	   $errors[] = "Cedula o RIF ya existe.";
+                } else {
 		$sql="INSERT INTO clientes (nombre_cliente, ci_cliente, telefono_cliente, email_cliente, direccion_cliente, date_added) VALUES ('$nombre','$ci','$telefono','$email','$direccion','$date_added')";
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
 				$messages[] = "Cliente ha sido ingresado satisfactoriamente.";
+				?>
+			<script> $("#guardar_cliente")[0].reset();</script>
+				<?php
 			} else{
-				$errors []= "Lo siento Cedula o RIF del cliente ya existe.";
+				$errors []= "Lo sentimos , el registro falló. Por favor, regrese y vuelva a intentarlo.";
+			}
 			}
 		} else {
 			$errors []= "Error desconocido.";

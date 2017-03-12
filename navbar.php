@@ -40,19 +40,10 @@ if ($login->isUserLoggedIn() == true) {
       </ul>
 
       <ul class="nav navbar-nav">
-      <?php
-                    $sql_user=mysqli_query($con,"select * from users where user_tipo = 1 or user_tipo = 2");
-                    while ($rw=mysqli_fetch_array($sql_user)){
-                      $id_user=$rw["user_id"];
-                      if ($id_user==$_SESSION['user_id']){
-                        ?>
+   
                   <li class="<?php echo $active_facturas;?>"><a href="facturas.php"><i class='glyphicon glyphicon-list-alt'></i> Facturas</a></li>
                   <li class="<?php echo $active_compras;?>"><a href="compras.php"><i  class=' glyphicon glyphicon-shopping-cart'></i> Compras</a></li>               
-                   <?php
-                      } 
-                    }
-                  ?>
-    
+ 
         <li class="<?php echo $active_productos;?>"><a href="productos.php"><i class='glyphicon glyphicon-barcode'></i> Productos</a></li>
 		    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-star-empty'></i> Clientes</a></li>
         <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-star'></i>Proveedores</a></li>               

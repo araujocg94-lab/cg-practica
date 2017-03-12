@@ -8,12 +8,12 @@
 	if($action == 'ajax'){
 		// quitar html/javascript 
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array('nombre_producto');//Columnas de busqueda
 		 $sTable = "productos";
-		 $sWhere = "";
+		 $sWhere = "WHERE descuento_producto > '0'";
 		if ( $_GET['q'] != "" )
 		{
-			$sWhere = "WHERE (";
+			$sWhere = "WHERE descuento_producto > '0' AND (";
 			for ( $i=0 ; $i<count($aColumns) ; $i++ )
 			{
 				$sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
@@ -21,7 +21,7 @@
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 		}
-		$sWhere.=" order by id_producto desc";
+		$sWhere.=" order by nombre_producto";
 		include 'pagination.php'; 
 		//Variables de paginacion
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -35,7 +35,7 @@
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './ofertas.php';
 		//consulta para odtener datos
-		$sql="SELECT * FROM  $sTable Where descuento_producto > '0' LIMIT $offset,$per_page";
+		$sql="SELECT * FROM  $sTable $sWhere  LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 		//enlazar datos odtenidos
 		if ($numrows>0){

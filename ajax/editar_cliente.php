@@ -27,7 +27,7 @@
 			if ($query_update){
 				$messages[] = "Cliente ha sido actualizado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento Cedula o RIF del cliente ya existe";
+				$errors []= "Lo siento Cedula o RIF ya existe";
 			}
 		} else {
 			$errors []= "Error desconocido.";

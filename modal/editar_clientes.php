@@ -29,7 +29,7 @@
 			   <div class="form-group">
 				<label for="mod_telefono" class="col-sm-3 control-label">Teléfono</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="mod_telefono" name="mod_telefono" pattern="^([0-9]{7,11})$" title="El Numero de telefono debe contener solo caracteres numericos" maxlength="11">
+				  <input type="text" class="form-control" id="mod_telefono" name="mod_telefono" pattern="^([0-9]{7,11})$" title="El Numero de telefono debe contener solo caracteres numericos de 7 a 11 digitos" maxlength="11">
 				</div>
 			  </div>
 			  

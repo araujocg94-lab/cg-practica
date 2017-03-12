@@ -44,7 +44,6 @@
 					<option value="">-- Selecciona tipo --</option>
 					<option value="0" selected>Empleado</option>
 					<option value="1">Admin</option>
-					<option value="2">Vendedor</option>
 				  </select>
 				</div>
 			  </div>

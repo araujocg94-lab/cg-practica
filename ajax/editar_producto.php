@@ -43,7 +43,7 @@
 				if(($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
 				$errors[]= "<p>Lo sentimos, sólo se permiten archivos JPG , JPEG, PNG y GIF.</p>";
 				} else if ($imageFileZise > 4194304) {//1048576 byte=1MB
-				$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 1MB</p>";
+				$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 4MB</p>";
 				}  else {
 				/* Fin Validacion*/
 				if ($imageFileZise>0){
@@ -62,7 +62,6 @@
 		$codigo=mysqli_real_escape_string($con,(strip_tags($_POST["mod_codigo"],ENT_QUOTES)));
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
 		$descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_descripcion"],ENT_QUOTES)));
-		// imagen
 
 		$cantidad=intval($_POST['mod_cantidad']);
 		$tipo=intval($_POST['mod_tipo']);
@@ -70,6 +69,10 @@
 		$descuento_venta=floatval($_POST['mod_descuento']);
 		$precio_venta=floatval($_POST['mod_precio']);
 		$id_producto=$_POST['mod_id'];
+		if ($costo_compra > $precio_venta) {
+			$errors []= "El costo no puede ser mayor al precio del producto ";
+		} else {
+
 		$sql="UPDATE productos SET 
 			codigo_producto='".$codigo."',
 			nombre_producto='".$nombre."', 
@@ -87,6 +90,7 @@
 				$messages[] = "Producto ha sido actualizado satisfactoriamente.";
 			} else{
 				$errors []= "Codigo del producto ya existe";
+			}
 			}
 		} else {
 			$errors []= "Error desconocido.";

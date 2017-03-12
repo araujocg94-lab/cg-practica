@@ -3,7 +3,12 @@
 	/*Inicia validacion del lado del servidor*/
 	if (empty($_POST['nombre'])) {
            $errors[] = "Nombre vacío";
-        } else if (!empty($_POST['nombre'])){
+        	 } else if (empty($_POST['ci'])){
+			$errors[] = "Ingrese cedula o Rif del Proveedor";
+        } else if (
+        	!empty($_POST['nombre']) &&
+			!empty($_POST['ci'])
+        	){
 		/* conectarse a la bd*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -14,12 +19,23 @@
 		$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
 		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
 		$date_added=date("Y-m-d H:i:s");
+		// checar si el codigo existe
+		 $sql = "SELECT * FROM proveedor WHERE ci_prov = '" . $ci . "';";
+           $query_check_ci = mysqli_query($con,$sql);
+		   $query_check=mysqli_num_rows($query_check_ci);
+         if ($query_check == 1) {
+         	   $errors[] = "Cedula o RIF ya existe.";
+                } else {
 		$sql="INSERT INTO proveedor (nombre_prov, ci_prov, telefono_prov, email_prov, direccion_prov, date_added) VALUES ('$nombre','$ci','$telefono','$email','$direccion','$date_added')";
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
 				$messages[] = "Proveedor ha sido ingresado satisfactoriamente.";
+				?>
+			<script> $("#guardar_prov")[0].reset();</script>
+				<?php
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo sentimos , el registro falló. Por favor, regrese y vuelva a intentarlo.";
+			}
 			}
 		} else {
 			$errors []= "Error desconocido.";

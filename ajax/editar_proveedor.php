@@ -28,7 +28,7 @@
 			if ($query_update){
 				$messages[] = "Proveedor ha sido actualizado satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento Cedula o RIF ya existe";
 			}
 		} else {
 			$errors []= "Error desconocido.";

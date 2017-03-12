@@ -29,7 +29,6 @@
 			<?php
 			include("modal/registro_productos.php");
 			include("modal/editar_productos.php");
-			include("modal/imagen_productos.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
@@ -78,7 +77,6 @@ $(document).ready(function(){
 				$("#resultados_ajax_productos").html(datos);
 				$('#guardar_datos').attr("disabled", false);
 				load(1);
-				$("#guardar_producto")[0].reset();
 		  }
 	});
 });

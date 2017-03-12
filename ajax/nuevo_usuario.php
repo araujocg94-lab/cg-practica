@@ -64,11 +64,15 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 					// insertar nuevo usuario
                     $sql = "INSERT INTO users (nombre, apellido, user_name, user_password_hash, user_email, user_tipo, date_added)
                             VALUES('".$nombre."','".$apellido."','" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "','" . $user_tipo . "','".$date_added."');";
+
                     $query_new_user_insert = mysqli_query($con,$sql);
 
                     // si usuario a sido creado exitosamente entinces:
                     if ($query_new_user_insert) {
                         $messages[] = "La cuenta ha sido creada con éxito.";
+                    ?>
+                        <script> $("#guardar_usuario")[0].reset();</script>
+                    <?php
                     } else {
                         $errors[] = "Lo sentimos , el registro falló. Por favor, regrese y vuelva a intentarlo.";
                     }

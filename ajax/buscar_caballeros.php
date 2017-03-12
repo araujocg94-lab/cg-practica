@@ -8,12 +8,12 @@
 	if($action == 'ajax'){
 		// quitar html/javascript 
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array('nombre_producto');//Columnas de busqueda
 		 $sTable = "productos";
-		 $sWhere = "";
+		 $sWhere = "WHERE tipo_producto= '2' OR tipo_producto='0'";
 		if ( $_GET['q'] != "" )
 		{
-			$sWhere = "WHERE (";
+			$sWhere = "WHERE (tipo_producto= '2' OR tipo_producto='0') AND (";
 			for ( $i=0 ; $i<count($aColumns) ; $i++ )
 			{
 				$sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
@@ -33,9 +33,9 @@
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
-		$reload = './caballeros.php';
+		$reload = './damas.php';
 		//consulta para odtener datos
-		$sql="SELECT * FROM  $sTable Where tipo_producto= '2' or tipo_producto='0' LIMIT $offset,$per_page";
+		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 		//enlazar datos odtenidos
 		if ($numrows>0){
@@ -61,7 +61,8 @@
 						$total=$precio_producto-$descuento_producto;
 					?>
 
-  				  	<div class="col-sm-4 col-lg-4 col-md-4">
+					
+  					  <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="<?php echo $imagen_producto; ?>" class="img-thumbnail">
                             <hr>
@@ -83,7 +84,7 @@
 				}
 				?>
 			</div>
-			<div class="col-md-4 col-md-offset-5"">
+				<div class="col-md-4 col-md-offset-5"">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?>
