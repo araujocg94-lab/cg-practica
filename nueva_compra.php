@@ -121,8 +121,9 @@
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script type="text/javascript" src="js/nueva_compra.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./css/autocomplete.css">
+    <script src="./js/autocomplete.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.js"> </script>
 	<script>
 		$(function() {
 						$("#ci_prov").autocomplete({

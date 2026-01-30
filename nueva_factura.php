@@ -127,6 +127,7 @@
 	<script type="text/javascript" src="js/nueva_factura.js"></script>
 	<link rel="stylesheet" href="./css/autocomplete.css">
     <script src="./js/autocomplete.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.js"> </script>
 	<script>
 		$(function() {
 						$("#ci_cliente").autocomplete({
